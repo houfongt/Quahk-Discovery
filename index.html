@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    </head>
+
+    <body>
+        <div class="nav-bar">
+            <a href="index.html" class="active">Logo</a>
+
+            <div id="nav-options">
+                <a href="index.html">Home</a>
+                <a href="submit.html">Submit</a>
+                <a href="help.html">Help</a>
+            </div>
+
+            <a href="javascript:void(0)" class="icon" onclick="showNav()">
+                <i class="fa fa-bars">
+                </i>
+            </a>
+        </div>
+        <script>
+            function showNav() {
+                    var x = document.getElementById("nav-options");
+                    if (x.style.display === "block") {
+                        x.style.display = "none";
+                    } else {
+                        x.style.display = "block";
+                    }
+                }
+        </script>
+
+    </body>
+    
+</html>
