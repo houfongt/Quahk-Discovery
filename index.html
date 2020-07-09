@@ -3,6 +3,7 @@
 
     <head>
         <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
@@ -10,7 +11,7 @@
     </head>
 
     <body>
-        <div class="nav-bar">
+       <!-- <div class="nav-bar">
             <a href="index.html" class="active">Logo</a>
 
             <div id="nav-options">
@@ -23,7 +24,20 @@
                 <i class="fa fa-bars">
                 </i>
             </a>
+        </div> -->
+       
+        <div class="app-bar-bottom">
+            <a href="#" class="nav__link">
+                <i class="material-icons nav__icon">devices</i>
+                <span class="nav__text">Devices</span>
+            </a>
+            <div class="btn">
+                <div class="btn__content">
+                    <i class="material-icons">add</i>
+                </div>
+            </div>
         </div>
+       
         <script>
             function showNav() {
                     var x = document.getElementById("nav-options");
@@ -34,7 +48,7 @@
                     }
                 }
         </script>
-
+        <script src="script.js"> </script>
     </body>
     
 </html>
