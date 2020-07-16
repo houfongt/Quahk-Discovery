@@ -12,7 +12,7 @@ jobs:
     
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@master
+        uses: master/checkout@master
       
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
