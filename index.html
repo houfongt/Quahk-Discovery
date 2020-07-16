@@ -3,13 +3,14 @@
 
     <head>
         <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="material.min.css">
+        <link rel="stylesheet" href="materialize.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no,  target-densityDpi=device-dpi" />
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
         <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-        <script src="material.min.js"></script>
+        <script src="materialize.min.js"></script>
     </head>
 
     <body>
@@ -29,27 +30,25 @@
         </div> -->
        
         <div class="app-bar-bottom">
-            <a href="#" class="nav__link">
-                <i class="material-icons nav__icon">devices</i>
-                <span class="nav__text">Devices</span>
-            </a>
-            <div class="btn">
-                <div class="btn__content">
-                    <i class="material-icons">add</i>
+            
+            <a class="btn-floating btn-large waves-effect waves-light red" id="nav-btn" href="#modal1"><i class="material-icons">add</i></a>
+
+            <div id="modal1" class="modal">
+                <div class="modal-content">
+                    <h4>Modal Header</h4>
+                    <p>A bunch of text</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
                 </div>
             </div>
         </div>
    
-        <script>
-            function showNav() {
-                    var x = document.getElementById("nav-options");
-                    if (x.style.display === "block") {
-                        x.style.display = "none";
-                    } else {
-                        x.style.display = "block";
-                    }
-                }
-        </script>
+       <script>
+            $(document).ready(function(){
+    $('.modal').modal();
+  });
+       </script>
         <script src="script.js"> </script>
     </body>
     

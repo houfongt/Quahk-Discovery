@@ -39,7 +39,7 @@ body, html {
     color: white;
 }
 
-.btn{
+#nav-btn{
   color: white;
   box-sizing: content-box;
   position: absolute;
