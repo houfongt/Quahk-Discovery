@@ -4,7 +4,7 @@
         docElem = $(document),
         formPage = $('.form-page'),
         contentPage = $('.app-bar-bottom'),
-        animSpeed = 500,
+        animSpeed = 350,
         openBtn = $('#nav-btn'),
         closeBtn = $('.close_btn');
 
