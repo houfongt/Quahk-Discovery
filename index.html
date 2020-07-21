@@ -29,15 +29,21 @@
                 <h5>步驟3之1．商家資料</h5>
                 <br>
                 <div class="input-field">
-                    <i class="material-icons prefix">edit</i>
+                    <i class="material-icons prefix">business</i>
                     <input placeholder="例如：ABC公司" id="store_name" type="text" class="validate" required>
-                    <label for="first_name">商家名稱</label>
+                    <label for="store_name">商家名稱</label>
                     <span class="helper-text" data-error="必填">必填</span>
                 </div>
-                <div class="input-field">
-                    <input id="last_name" type="text" class="validate">
-                    <label for="last_name">商家名稱</label>
+                <div class="input-field" id="location_box">
+                    <i class="material-icons prefix">location_on</i>
+                    <input id="location" type="text" class="validate" required>
+                    <label for="location">商家位置</label>
+                    <span class="helper-text" data-error="必填">必填</span> 
                 </div>
+                <div class="input-field">
+                    <center><a class="waves-effect waves-light btn">button</a></center>
+                </div>
+                
             </div>
             <div class="form-block"></div>
             <a class="close_btn waves-effect waves-teal btn-flat btn-large">取消</a>

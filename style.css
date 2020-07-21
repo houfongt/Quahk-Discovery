@@ -74,6 +74,8 @@ body, html {
   width: 90%;
 }
 
+
+
 .app-bar-bottom{
   position: fixed;
   bottom: 0;
@@ -90,6 +92,7 @@ body, html {
   left: 0;
   right: 0;
   bottom: 0;
+  
   background-color: #6102ED;
   clip-path: polygon(0 0, 
     calc(50% - 38px) 0, 
