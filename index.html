@@ -36,12 +36,12 @@
                 </div>
                 <div class="input-field" id="location_box">
                     <i class="material-icons prefix">location_on</i>
-                    <input id="location" type="text" class="validate" required>
-                    <label for="location">商家位置</label>
+                    <input id="input_location" type="text" class="validate" required>
+                    <label for="input_location">商家位置</label>
                     <span class="helper-text" data-error="必填">必填</span> 
                 </div>
                 <div class="input-field">
-                    <center><a class="waves-effect waves-light btn">button</a></center>
+                    <center><a class="waves-effect waves-light btn">自動獲取位置</a></center>
                 </div>
                 
             </div>
@@ -56,6 +56,31 @@
                 });
        </script>
         <script src="script.js"></script>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
+        
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+             https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-analytics.js"></script>
+        
+        <script>
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: "AIzaSyAG7-yLEWcsPtEgY18yY4v4yGaUui15lvk",
+                authDomain: "quahk-competition-3rdmwdsc.firebaseapp.com",
+                databaseURL: "https://quahk-competition-3rdmwdsc.firebaseio.com",
+                projectId: "quahk-competition-3rdmwdsc",
+                storageBucket: "quahk-competition-3rdmwdsc.appspot.com",
+                messagingSenderId: "768144406056",
+                appId: "1:768144406056:web:40c269b46cd21b67e6e71d",
+                measurementId: "G-6YHSEGHMJV"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            firebase.analytics();
+        </script>
+        
     </body>
     
 </html>
