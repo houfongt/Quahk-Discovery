@@ -45,6 +45,35 @@ body, html {
   
 }
 
+.form-block {
+  position: absolute;
+  display: inline-block;
+  bottom: 0;
+  height: 13%;
+  width: 100%;
+  background-color: #64b5f6;
+}
+
+.form1 {
+  position: absolute;
+  bottom: 80%;
+  color: #000;
+  left: 5.5%;
+  top: 5%;
+  width: 100%;
+  
+}
+
+.form1 hr {
+  position: absolute;
+  width: 90%;
+  left: 0%;
+}
+
+.form1 div.input-field {
+  width: 90%;
+}
+
 .app-bar-bottom{
   position: fixed;
   bottom: 0;
