@@ -1,5 +1,3 @@
-
-
 (function () {
     
     var windowH = $(window).height(),
