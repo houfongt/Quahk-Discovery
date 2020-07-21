@@ -1,4 +1,4 @@
-var x = document.getElementById("input_location").value;
+var x = document.getElementById("input_location");
 
 function getLocation() {
     if (navigator.geolocation) {
@@ -6,4 +6,8 @@ function getLocation() {
     } else {
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
+}
+
+function showPosition(position) {
+    x.innerHTML = position.coords.latitude + ", " + position.coords.longitude;
 }
