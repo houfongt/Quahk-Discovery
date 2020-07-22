@@ -33,21 +33,35 @@ body, html {
 }
 
 .close_btn {
+  flex: 1;
   position: absolute;
   bottom: -90%;
   left: 10%;
 }
 
+.next_btn {
+  position: absolute;
+  
+  bottom: -90%;
+  right: -15%;
+}
+
 .form-page {
   position: absolute;
-  width: 100%;
+  width: 100vw;
   box-sizing: content-box;
   background-color: #fff;
+  margin: 0;
+  padding: 0;
 }
 
 .form-block {
   position: absolute;
-  display: inline-block;
+  display: inline-flex;
+  flex-direction: row;
+  
+  justify-content: space-between;
+  flex-wrap: wrap;
   bottom: 0;
   height: 13%;
   width: 100%;
@@ -60,7 +74,7 @@ body, html {
   position: absolute;
   bottom: 80%;
   color: #000;
-  left: 5.5%;
+  left: 6%;
   top: 5%;
   width: 90%;
   

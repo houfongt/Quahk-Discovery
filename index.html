@@ -30,24 +30,28 @@
                 <br>
                 <div class="input-field">
                     <i class="material-icons prefix">business</i>
-                    <input placeholder="例如：ABC公司" id="store_name" type="text" class="validate" required>
+                    <input id="store_name" type="text" class="validate" required>
                     <label for="store_name">商家名稱</label>
                     <span class="helper-text" data-error="必填">必填</span>
-                </div>
+                </div><br>
                 <div class="input-field" id="location_box">
                     <i class="material-icons prefix">location_on</i>
-                    <input id="input_location" type="text" class="validate" required>
+                    <input placeholder="可自動獲取位置" id="input_location" type="text" class="validate" required>
                     <label for="input_location">商家位置</label>
                     <span class="helper-text" data-error="必填">必填</span> 
                 </div>
                 <div class="input-field">
                     <center><a class="waves-effect waves-light btn" onclick="getLocation()">自動獲取位置</a></center>
+                </div><br>
+                <div class="input-field">
+                    <i class="material-icons prefix">edit</i>
+                    <textarea placeholder="這商家的服務，態度如何？" id="textarea1" class="materialize-textarea"></textarea>
+                    <label for="textarea1">意見</label>
                 </div>
-                
             </div>
             <div class="form-block"></div>
             <a class="close_btn waves-effect waves-teal btn-flat btn-large">取消</a>
-            
+            <a class="next_btn waves-effect waves-teal btn-large">繼續</a>
         </div>
 
        <script type="text/javascript">
