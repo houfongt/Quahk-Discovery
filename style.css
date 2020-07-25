@@ -1,7 +1,6 @@
 body, html {
     padding: 0;
     margin: 0;
-    
 }
 
 #nav-btn{
@@ -25,7 +24,6 @@ body, html {
   left: 50%;
   top: -50%;
   transform: translateX(-50%);
-  
 }
 
 .btn:hover{
@@ -33,17 +31,20 @@ body, html {
 }
 
 .close_btn {
-  flex: 1;
   position: absolute;
   bottom: -90%;
   left: 10%;
 }
 
+.close_btn.btn-large:hover {
+  background-color: #ef5350;
+}
+
 .next_btn {
   position: absolute;
-  
   bottom: -90%;
-  right: -15%;
+  float: right;
+  right: 10%;
 }
 
 .form-page {
@@ -57,17 +58,11 @@ body, html {
 
 .form-block {
   position: absolute;
-  display: inline-flex;
-  flex-direction: row;
-  
-  justify-content: space-between;
-  flex-wrap: wrap;
+  display: inline-block;
   bottom: 0;
   height: 13%;
   width: 100%;
-  margin: 0;
-  padding: 0;
-  background-color: #64b5f6;
+  background-color: #fff;
 }
 
 .form1 {
@@ -77,20 +72,17 @@ body, html {
   left: 6%;
   top: 5%;
   width: 90%;
-  
 }
 
 .form1 div.input-field {
   width: 90%;
 }
 
-
 .app-bar-bottom{
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  
   height: 66px;
 }
 
