@@ -62,7 +62,7 @@ body, html {
   bottom: 0;
   height: 13%;
   width: 100%;
-  background-color: #fff;
+  background-color: #eeeeee;
 }
 
 .form1 {
@@ -72,6 +72,17 @@ body, html {
   left: 6%;
   top: 5%;
   width: 90%;
+  display: none;
+}
+
+.form2 {
+  position: absolute;
+  bottom: 80%;
+  color: #000;
+  left: 6%;
+  top: 5%;
+  width: 90%;
+  display: inline-block;
 }
 
 .form1 div.input-field {
