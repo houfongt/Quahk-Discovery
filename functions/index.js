@@ -39,6 +39,8 @@ exports.formSubmit = functions.https.onRequest((req, res) => {
 
         mailTransport.sendMail(mailOptions);
 
-        res.status(200).send({ isEmailSend: true });
+        
+
+        res.redirect('https://3rdmwdsc.quahk.com/formSuccess.html');
     });
 }); 
