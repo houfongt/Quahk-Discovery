@@ -78,7 +78,8 @@
              https://firebase.google.com/docs/web/setup#available-libraries -->
         <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-analytics.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-storage.js"></script>
-        
+        <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-performance.js"></script>
+
         <script>
             // Your web app's Firebase configuration
             var firebaseConfig = {
@@ -95,6 +96,7 @@
             firebase.initializeApp(firebaseConfig);
             firebase.analytics();
             var storage = firebase.storage();
+            var perf = firebase.performance();
         </script>
     
     </body>
