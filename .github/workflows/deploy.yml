@@ -15,6 +15,9 @@ jobs:
 
       - name: Install modules
         run: yarn
+
+      - name: Install ESLint
+        run: npm install eslint
       
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
