@@ -12,12 +12,6 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@master
-
-      - name: Install modules
-        run: yarn
-
-      - name: Install ESLint
-        uses: hallee/eslint-action@1.0.3
       
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
