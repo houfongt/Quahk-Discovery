@@ -16,11 +16,8 @@ jobs:
       - name: Install modules
         run: yarn
 
-      - name: go to functions
-        run: cd functions/
-
       - name: Install ESLint
-        run: npm install eslint --save-dev
+        uses: hallee/eslint-action@1.0.3
       
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
