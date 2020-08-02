@@ -13,8 +13,8 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@master
 
-      - name: ESLint
-        uses: stefanoeb/eslint-action@1.0.2
+      - name: Install modules
+        uses: yarn
       
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
