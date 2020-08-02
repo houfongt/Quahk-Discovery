@@ -67,4 +67,8 @@ node_modules
 # dotenv environment variables file
 .env
 
+# Firebase Functions
 functions/
+
+# package-lock.json in the current dir
+package-lock.json
