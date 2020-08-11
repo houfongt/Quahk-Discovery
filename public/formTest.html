@@ -22,21 +22,24 @@
         <input type="email" name="email"  />
         <p>Message</p>
         <textarea type="text" name="message"></textarea><br>
-        <input type="file" id="bannerImg" name="img" accept="image/*" /><br><br>
+        <input type="file" id="uploadImg" name="img" accept="image/*" /><br><br>
         <input type="submit" value="submit" id="submitBtn"/>
 
     </form>
+        <br>
+        <input type="button" value="Reset Local Storage !!!" id="resetStorage" onclick="resetLocal()"/>
     <br>
     <div class="shopBlock">
         <h3>Shop1</h3>
         <hr>
         <p>你的意見：</p>
-        <img src="" id="tableBanner" />
+        <div id="resultImg"></div>
     </div>
 
     <p id="demo"></p>
 
     <script src="js/formScript.js"></script>
+    <script src="js/localStorage.js"></script>
 
     </body>
 </html>
