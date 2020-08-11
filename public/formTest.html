@@ -14,14 +14,16 @@
    
     
     <body onload="checkStorage()">
-        <input type="checkbox" id="cloud1" onclick="changeCloudStatus()">
+        <input type="checkbox" id="cloud1" onclick="changeCloudStatus()" disabled>
         <label for="cloud1"> Cloud Saving</label><br>
     <form id="ricky">
        
         <p>Email</p>    
         <input type="email" name="email"  />
+        <p>Shop Name</p>
+        <input type="text" id="shopName">
         <p>Message</p>
-        <textarea type="text" name="message"></textarea><br>
+        <textarea type="text" name="message" id="shopComment"></textarea><br>
         <input type="file" id="uploadImg" name="img" accept="image/*" /><br><br>
         <input type="submit" value="submit" id="submitBtn"/>
 
@@ -29,15 +31,18 @@
         <br>
         <input type="button" value="Reset Local Storage !!!" id="resetStorage" onclick="resetLocal()"/>
     <br>
+    <div id="for-vue">
     <div class="shopBlock">
         <h3>Shop1</h3>
         <hr>
         <p>你的意見：</p>
         <div id="resultImg"></div>
     </div>
+    </div>
 
     <p id="demo"></p>
 
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="js/formScript.js"></script>
     <script src="js/localStorage.js"></script>
 

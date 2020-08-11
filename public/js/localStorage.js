@@ -13,18 +13,16 @@ function checkStorage() {
     if (typeof (Storage) !== "undefined") {
 
         // Code for localStorage/sessionStorage.
-
-        var localCases = { 'title': 'abc', 'msg': 'hello world' };
-        // Put the object into storage
-       // localStorage.setItem('cases', JSON.stringify(localCases));
-
-        if (localStorage.store0 == undefined) {
-            console.log("doesn't exists");
-        } else {
-            var casesArray = JSON.parse(localStorage.getItem("cases"));
-            console.log(casesArray);
-        }
-
+       if (localStorage.length !== 0) {
+           var app = new Vue({
+               el: '#for-vue',
+               data: {
+                   shop: []
+               }
+           });
+       } else {
+           console.log('is empty bull');
+       }
         //localStorage.cloudSaving = false;
         //localStorage.message = document.querySelector("#message");
     } else {
