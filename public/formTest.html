@@ -22,8 +22,8 @@
         <input type="email" name="email"  />
         <p>Message</p>
         <textarea type="text" name="message"></textarea><br>
-        <input type="file" id="img" name="img" accept="image/*" /><br><br>
-        <input type="submit" value="submit" id="submitBtn" onclick="localSave()"/>
+        <input type="file" id="bannerImg" name="img" accept="image/*" /><br><br>
+        <input type="submit" value="submit" id="submitBtn"/>
 
     </form>
     <br>
@@ -31,55 +31,12 @@
         <h3>Shop1</h3>
         <hr>
         <p>你的意見：</p>
+        <img src="" id="tableBanner" />
     </div>
 
     <p id="demo"></p>
 
-    <script>
-        function changeCloudStatus() {
-            var checkBox = document.querySelector("#cloud1");
-            if (checkBox.checked == true) {
-                localStorage.cloudSaving = true;
-                alert("Cloud Saving has been turned on.");
-            } else if (checkBox.checked == false) {
-                localStorage.cloudSaving = false;
-                alert("Cloud Saving has been disabled.");
-            }
-        }
-
-
-        function checkStorage() {
-            if (typeof (Storage) !== "undefined") {
-                // Code for localStorage/sessionStorage.
-                var localCases = {'title': 'abc', 'msg': 'hello world'};
-
-                // Put the object into storage
-                localStorage.setItem('cases', JSON.stringify(localCases));
-
-               if (localStorage.cases == "") {
-                   console.log("doesn't exists");
-               } else {
-                   var i;
-                   var casesArray = JSON.parse(localStorage.getItem("cases"));
-                   for (i == 0; i < 5; i++) {
-
-                   };
-               }
-               
-                //localStorage.cloudSaving = false;
-                //localStorage.message = document.querySelector("#message");
-            } else {
-                // Sorry! No Web Storage support..
-                alert("Sorry! Your browser don't support Local Storage \nSo, you can only use cloud saving.");
-                document.querySelector("#submitBtn").removeAttribute("onclick");
-                document.getElementById("ricky").setAttribute("action", "https://us-central1-quahk-competition-3rdmwdsc.cloudfunctions.net/formSubmit");
-                document.getElementById("ricky").setAttribute("method", "POST");
-                document.getElementById("cloud1").setAttribute("disabled", "");
-                document.getElementById("cloud1").setAttribute("checked", "");
-                
-            }
-        }
-    </script>
+    <script src="js/formScript.js"></script>
 
     </body>
 </html>
