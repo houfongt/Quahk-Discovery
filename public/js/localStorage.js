@@ -17,7 +17,22 @@ function checkStorage() {
            var app = new Vue({
                el: '#for-vue',
                data: {
-                   shop: []
+                   shops: [],
+                   res: []
+               },
+               mounted: function() {
+                   for (let i = 0; i < localStorage.length; i++) {
+                       res = localStorage.getItem(localStorage.key(i));
+                       let image = new Image;
+                       
+                       if (res.merchantImg !== undefined) {
+                           image.src = res.merchantImg;
+                           // parentDiv.appendChild(image);
+                       } else {
+                           
+                       }
+                       
+                   }
                }
            });
        } else {

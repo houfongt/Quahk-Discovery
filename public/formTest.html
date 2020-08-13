@@ -32,8 +32,8 @@
         <input type="button" value="Reset Local Storage !!!" id="resetStorage" onclick="resetLocal()"/>
     <br>
     <div id="for-vue">
-    <div class="shopBlock">
-        <h3>Shop1</h3>
+    <div class="shopBlock" v-for="shop in shops">
+        <h3>{{ res.shopName }}</h3>
         <hr>
         <p>你的意見：</p>
         <div id="resultImg"></div>

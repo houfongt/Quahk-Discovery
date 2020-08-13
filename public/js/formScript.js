@@ -29,7 +29,7 @@ form.addEventListener('submit', function (e) {
 
                 alert('success');
 
-                showImage();
+               // showImage();
             } else {
                 alert('failed');
             }
@@ -46,13 +46,36 @@ form.addEventListener('submit', function (e) {
         console.log(merchant);
 
     } else {
+
+        let merchantNum = localStorage.getItem("merchantNum");
         
         let merchant = {
             merchantName: shopName,
             merchantComment: shopComment
-        }
+        };
 
         console.log(merchant);
+
+        let merchantStringify = JSON.stringify(merchant);
+
+        if (merchantNum !== undefined) {
+            let merchantNum = localStorage.getItem('merchantNum');
+            let merchantNumParsed = parseInt(merchantNum);
+            let y = merchantNumParsed + 1;
+
+            localStorage.setItem('merchantNum', y);
+            localStorage.setItem(y, merchantStringify);
+
+        } else {
+            localStorage.setItem('merchantNum', '0');
+            let merchant = {
+                merchantName: shopName,
+                merchantComment: shopComment
+            };
+
+            let merchantStringify = JSON.stringify(merchant);
+            localStorage.setItem('0', merchantStringify);
+        }
     }
 
     
@@ -92,6 +115,4 @@ function showImage() {
     }
 }
 
-
-
-showImage();
+//showImage();
