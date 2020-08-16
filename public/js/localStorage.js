@@ -1,3 +1,5 @@
+Vue.config.devtools = true;
+
 function changeCloudStatus() {
     var checkBox = document.querySelector("#cloud1");
     if (checkBox.checked == true) {
@@ -18,22 +20,20 @@ function checkStorage() {
                el: '#for-vue',
                data: {
                    shops: [],
-                   res: []
+                   res: [],
+                   todos: [
+                       {text: "vueTest1", id: 1},
+                       {text: "vueTest2", id: 2}
+                   ]
                },
-               mounted: function() {
-                   for (let i = 0; i < localStorage.length; i++) {
-                       res = localStorage.getItem(localStorage.key(i));
-                       let image = new Image;
-                       
-                       if (res.merchantImg !== undefined) {
-                           image.src = res.merchantImg;
-                           // parentDiv.appendChild(image);
-                       } else {
-                           
-                       }
-                       
-                   }
-               }
+               mounted() {
+                    let i = 0;
+                    let data_JSON = localStorage.getItem(localStorage.key(i));
+                    let data_decode = JSON.parse(data_JSON);
+                    this.res = data_decode;
+                    i++;
+               } 
+
            });
        } else {
            console.log('is empty bull');

@@ -58,6 +58,8 @@ form.addEventListener('submit', function (e) {
 
         let merchantStringify = JSON.stringify(merchant);
 
+
+        
         if (merchantNum !== undefined) {
             let merchantNum = localStorage.getItem('merchantNum');
             let merchantNumParsed = parseInt(merchantNum);
@@ -67,7 +69,7 @@ form.addEventListener('submit', function (e) {
             localStorage.setItem(y, merchantStringify);
 
         } else {
-            localStorage.setItem('merchantNum', '0');
+            //localStorage.setItem('merchantNum', '0');
             let merchant = {
                 merchantName: shopName,
                 merchantComment: shopComment
