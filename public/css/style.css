@@ -46,6 +46,10 @@ body, html {
   bottom: -90%;
   float: left;
   left: 10%;
+ 
+}
+
+#form2OptionsId {
   display: none;
 }
 
