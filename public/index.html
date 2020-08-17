@@ -6,10 +6,9 @@
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <title>3rdMWDSC - Quahk Competitions</title>
         <link rel="stylesheet" href="css/materialize.min.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no,  target-densityDpi=device-dpi" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <meta http-equiv='Content-Type' content='text/html, charset=utf-8' />
+        <meta charset="UTF-8">
         <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
         <script type="text/javascript" src="https://api.quahk.com/public_js/materialize.min.js"></script>
         
@@ -24,7 +23,7 @@
             
         </div>
 
-        <div class="form-page">
+        <form class="form-page">
             <div class="form1">
                 <h4>發現中小企</h4>
                 <h5>步驟3之1．商家資料(一)</h5>
@@ -58,38 +57,83 @@
                 
             </div>
             <div class="form-block"></div>
-            <!-- <a class="btn-large waves-effect btn-flat close_btn" id="formCancel">取消</a> -->
-            <a class="next_btn btn-floating btn-large waves-effect waves-light  teal lighten-1" id="form1Next"><i class="material-icons">arrow_forward</i></a>
-            <a class='dropdown-trigger btn-floating btn-large waves-effect waves-light  teal lighten-1 form2Options' href='#' data-target='dropdown1' >Drop Me!</a>
+             <a class="btn-large waves-effect btn-flat closeBtn" id="formCancelBtn">取消</a> 
+            <a class="next_btn btn-floating btn-large waves-effect waves-light teal lighten-1" id="form1Next"><i class="material-icons">arrow_forward</i></a>
+          
+            <a class="dropdown-trigger btn-floating btn-large waves-effect waves-light teal lighten-1 form2Options" data-target='dropdown1'>Drop</a>
 
-  <!-- Dropdown Structure -->
-  <ul id='dropdown1' class='dropdown-content'>
-    <li><a href="#!">one</a></li>
-    <li><a href="#!">two</a></li>
-    
-  </ul>
+            <!-- Dropdown Structure -->
+            <ul id='dropdown1' class='dropdown-content'>
+            <li><a href="#!" class="closeBtn_Actions">取消</a></li>
+            <li><a href="#!" id="backForm1Btn">上一步</a></li>
+            </ul>
         
             <a class="next_btn btn-floating btn-large waves-effect waves-light  teal lighten-1" id="form2Next"><i class="material-icons">arrow_forward</i></a>
            
-        </div>
+        </form>
+    <div class="loader-wrapper">
+        <div class="preloader-wrapper small active">
+            <div class="spinner-layer spinner-blue">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div><div class="gap-patch">
+                <div class="circle"></div>
+              </div><div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+      
+            <div class="spinner-layer spinner-red">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div><div class="gap-patch">
+                <div class="circle"></div>
+              </div><div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+      
+            <div class="spinner-layer spinner-yellow">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div><div class="gap-patch">
+                <div class="circle"></div>
+              </div><div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+      
+            <div class="spinner-layer spinner-green">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div><div class="gap-patch">
+                <div class="circle"></div>
+              </div><div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>
+    </div>        
 
        <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.fixed-action-btn');
-            var instances = M.FloatingActionButton.init(elems, {
-                direction: 'right',
-                hoverEnabled: false
-            });
-        });
-
+        
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.dropdown-trigger');
             var instances = M.Dropdown.init(elems);
         });
-       </script>
-    <script src="https://api.quahk.com/3rdmwdsc/scrollPage.js"></script>
-       <script src="js/getLocation.js"></script>
-       
+
+        </script>
+
+        <script src="https://api.quahk.com/3rdmwdsc/scrollPage.js"></script>
+        <script src="js/getLocation.js"></script>
+        <script src="js/switchPage.js"></script>
+        
+        <!-- Loading Page -->
+        <script>
+        $(window).on("load", function(){
+		    $(".loader-wrapper").fadeOut("slow");
+        })
+        </script>
            
                <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>

@@ -30,20 +30,23 @@ body, html {
   cursor: pointer;
 }
 
-.close_btn {
+.closeBtn {
   position: absolute;
   bottom: -90%;
+  float: left;
   left: 10%;
+}
+
+.closeBtn.btn-large:hover {
+  background-color: #ef5350;
 }
 
 .form2Options {
   position: absolute;
   bottom: -90%;
+  float: left;
   left: 10%;
-}
-
-.close_btn.btn-large:hover {
-  background-color: #ef5350;
+  display: none;
 }
 
 .next_btn {
@@ -71,22 +74,19 @@ body, html {
   background-color: #eeeeee;
 }
 
+#form1Next {
+  display: inline ;
+}
+
 #form2Next {
   display: none;
 }
 
-
-.form1 {
-  position: absolute;
-  bottom: 80%;
-  color: #000;
-  left: 6%;
-  top: 5%;
-  width: 90%;
-  display: none;
+#formCancelBtn {
+  display: inline;
 }
 
-.form2 {
+.form1 {
   position: absolute;
   bottom: 80%;
   color: #000;
@@ -96,8 +96,30 @@ body, html {
   display: inline-block;
 }
 
+.form2 {
+  position: absolute;
+  bottom: 80%;
+  color: #000;
+  left: 6%;
+  top: 5%;
+  width: 90%;
+  display: none;
+}
+
 .form1 div.input-field {
   width: 90%;
+}
+
+.loader-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background-color: white;
 }
 
 .app-bar-bottom{
