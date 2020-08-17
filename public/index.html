@@ -58,14 +58,34 @@
                 
             </div>
             <div class="form-block"></div>
-            <a class="btn-large waves-effect btn-flat close_btn">取消</a>
-            <a class="next_btn btn-floating btn-large waves-effect waves-light  teal lighten-1"><i class="material-icons">add</i></a>
+            <!-- <a class="btn-large waves-effect btn-flat close_btn" id="formCancel">取消</a> -->
+            <a class="next_btn btn-floating btn-large waves-effect waves-light  teal lighten-1" id="form1Next"><i class="material-icons">arrow_forward</i></a>
+            <a class='dropdown-trigger btn-floating btn-large waves-effect waves-light  teal lighten-1 form2Options' href='#' data-target='dropdown1' >Drop Me!</a>
+
+  <!-- Dropdown Structure -->
+  <ul id='dropdown1' class='dropdown-content'>
+    <li><a href="#!">one</a></li>
+    <li><a href="#!">two</a></li>
+    
+  </ul>
+        
+            <a class="next_btn btn-floating btn-large waves-effect waves-light  teal lighten-1" id="form2Next"><i class="material-icons">arrow_forward</i></a>
+           
         </div>
 
        <script type="text/javascript">
-            $(document).ready(function(){
-                $('.modal').modal();
-                });
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.fixed-action-btn');
+            var instances = M.FloatingActionButton.init(elems, {
+                direction: 'right',
+                hoverEnabled: false
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.dropdown-trigger');
+            var instances = M.Dropdown.init(elems);
+        });
        </script>
     <script src="https://api.quahk.com/3rdmwdsc/scrollPage.js"></script>
        <script src="js/getLocation.js"></script>

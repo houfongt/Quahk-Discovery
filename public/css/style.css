@@ -36,6 +36,12 @@ body, html {
   left: 10%;
 }
 
+.form2Options {
+  position: absolute;
+  bottom: -90%;
+  left: 10%;
+}
+
 .close_btn.btn-large:hover {
   background-color: #ef5350;
 }
@@ -64,6 +70,11 @@ body, html {
   width: 100%;
   background-color: #eeeeee;
 }
+
+#form2Next {
+  display: none;
+}
+
 
 .form1 {
   position: absolute;
