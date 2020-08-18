@@ -1,8 +1,8 @@
-  var LocationBtn = document.getElementById('autoLocationBtn');
+var LocationBtn = document.getElementById('autoLocationBtn');
 
   
   
-  function startMap() {
+function startMap() {
     $('#mapModel').modal('open');
     initMap();
   }
@@ -11,47 +11,48 @@
       // prompted by your browser. If you see the error "The Geolocation service
       // failed.", it means you probably did not give permission for the browser to
       // locate you.
-      var map, infoWindow;
+var map, infoWindow;
       //var marker = false;
     
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 22.210928, lng: 113.552971},
-          zoom: 18
-        });
+function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 22.210928, lng: 113.552971},
+        zoom: 18
+    });
         //infoWindow = new google.maps.Marker;
 
         // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+        var pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+        };
 
-            var marker = new google.maps.Marker({
-                    position: pos,
-                    map: map,
-                    draggable: true //make it draggable
-                });
+        var marker = new google.maps.Marker({
+            position: pos,
+            map: map,
+            draggable: true //make it draggable
+        });
                // console.log(marker);
             //infoWindow.setContent('Location found.');
             //infoWindow.open(map);
-            map.setCenter(pos);
+        map.setCenter(pos);
 
-            markerLocation(marker);
+        markerLocation(marker);
 
-           google.maps.event.addListener(map, 'click', function(event) {
+        google.maps.event.addListener(map, 'click', function(event) {
+        
             var clickedLocation = event.latLng;
-                marker.setPosition(clickedLocation);
-                markerLocation(marker);
-            });
-
-           google.maps.event.addListener(marker, 'dragend', function(event){
+            marker.setPosition(clickedLocation);
             markerLocation(marker);
-            });
+        });
 
-          }, function(error) {
+        google.maps.event.addListener(marker, 'dragend', function(event){
+            markerLocation(marker);
+        });
+
+        }, function(error) {
             if (error.code == error.PERMISSION_DENIED) {
                 $('#mapError').modal('open');
                 var marker = false;
@@ -120,13 +121,35 @@
         infoWindow.open(map);
       }
       */
-      function markerLocation(marker){
+    function markerLocation(marker){
         //Get location.
         var currentLocation = marker.getPosition();
         //Add lat and lng values to a field that we can save.
         let lat = currentLocation.lat();
         let lng = currentLocation.lng();
-        let finalPosition = lat + ", " + lng;
+        let finalPosition = lat + "," + lng;
         console.log(finalPosition);
-        document.getElementById('input_location').value = finalPosition; //latitude
+        document.getElementById('input_location').value = finalPosition;
+        
+        var geocoder = new google.maps.Geocoder;
+        var decodedName = document.getElementById('decodedName');
+
+        geocodeLatLng(geocoder, finalPosition);
     }
+
+function geocodeLatLng(geocoder, finalPosition) {
+    
+    var latlngStr = finalPosition.split(',', 2);
+    var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
+    geocoder.geocode({'location': latlng}, function(results, status) {
+        if (status === 'OK') {
+            if (results[0]) {
+              document.getElementById('decoded_location').value = results[0].formatted_address;
+            } else {
+              window.alert('No results found');
+            }
+          } else {
+            window.alert('Geocoder failed due to: ' + status);
+          }
+        });
+      }
