@@ -30,13 +30,13 @@
                 <br>
                 <div class="input-field">
                     <i class="material-icons prefix">business</i>
-                    <input id="store_name" type="text" class="validate" required>
+                    <input id="store_name" type="text" class="validate" value="" required>
                     <label for="store_name">商家名稱</label>
                     <span class="helper-text" data-error="必填">必填</span>
                 </div><br>
                 <div class="input-field" id="location_box">
                     <i class="material-icons prefix">location_on</i>
-                    <input placeholder="可自動獲取位置" id="input_location" type="text" class="validate" required>
+                    <input placeholder="可自動獲取位置" id="input_location" type="text" class="validate" value="" required>
                     <label for="input_location">商家位置</label>
                     <span class="helper-text" data-error="必填">必填</span> 
                 </div>
@@ -57,20 +57,43 @@
                 
             </div>
             <div class="form-block"></div>
-             <a class="btn-large waves-effect btn-flat closeBtn" id="formCancelBtn">取消</a> 
+             <a class="btn-large waves-effect btn-flat closeBtn leftBtn" id="formCancelBtn">取消</a> 
             <a class="next_btn btn-floating btn-large waves-effect waves-light teal lighten-1" id="form1Next"><i class="material-icons">arrow_forward</i></a>
           
-            <a class="dropdown-trigger btn-floating btn-large waves-effect waves-light teal lighten-1 form2Options" id="form2OptionsId" data-target='dropdown1'>Drop</a>
+            <a class="dropdown-trigger btn-floating btn-large waves-effect waves-light teal lighten-1 leftBtn" id="form2OptionsId" data-target='dropdown1'><i class="material-icons">arrow_back</i></a>
 
             <!-- Dropdown Structure -->
             <ul id='dropdown1' class='dropdown-content'>
-            <li><a href="#!" class="closeBtn_Actions">取消</a></li>
+            <li><a href="#cancelModal" class="closeBtn">取消</a></li>
             <li><a href="#!" id="backForm1Btn">上一步</a></li>
             </ul>
         
             <a class="next_btn btn-floating btn-large waves-effect waves-light  teal lighten-1" id="form2Next"><i class="material-icons">arrow_forward</i></a>
            
         </form>
+
+
+  <!-- Cancel Modal -->
+        <div id="cancelModel" class="modal">
+          <div class="modal-content">
+            <h4>Are you sure to cancel?</h4>
+            <p>All ricky you have entered will be deleted.</p>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat closeBtn_Actions">Agree</a>
+          </div>
+        </div>
+
+        <div id="missingInfoModel" class="modal">
+          <div class="modal-content">
+            <h4>Warning</h4>
+            <p>Please provide all the needed informations.</p>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+          </div>
+        </div>
+
     <div class="loader-wrapper">
         <div class="preloader-wrapper small active">
             <div class="spinner-layer spinner-blue">
@@ -116,6 +139,11 @@
     </div>        
 
        <script type="text/javascript">
+
+        document.addEventListener('DOMContentLoaded', function() {
+          var elems = document.querySelectorAll('.modal');
+          var instances = M.Modal.init(elems);
+        });
         
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.dropdown-trigger');
@@ -124,9 +152,11 @@
 
         </script>
 
-        <script src="https://api.quahk.com/3rdmwdsc/scrollPage.js"></script>
+        <!--<script src="https://api.quahk.com/3rdmwdsc/scrollPage.js"></script>-->
         <script src="js/getLocation.js"></script>
         <script src="js/switchPage.js"></script>
+        <script src="js/scrollPage.js"></script>
+        <script src="js/map.js"></script>
         
         <!-- Loading Page -->
         <script>
@@ -134,6 +164,8 @@
 		    $(".loader-wrapper").fadeOut("slow");
         })
         </script>
+
+        <script src="js/map.js"></script>
            
                <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>

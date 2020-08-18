@@ -30,7 +30,7 @@ body, html {
   cursor: pointer;
 }
 
-.closeBtn {
+.leftBtn {
   position: absolute;
   bottom: -90%;
   float: left;
@@ -39,14 +39,6 @@ body, html {
 
 .closeBtn.btn-large:hover {
   background-color: #ef5350;
-}
-
-.form2Options {
-  position: absolute;
-  bottom: -90%;
-  float: left;
-  left: 10%;
- 
 }
 
 #form2OptionsId {
