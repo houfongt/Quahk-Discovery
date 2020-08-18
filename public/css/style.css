@@ -3,6 +3,11 @@ body, html {
     margin: 0;
 }
 
+#map {
+  height: 50vh;
+  width: auto;
+}
+
 #nav-btn{
   color: white;
   box-sizing: content-box;

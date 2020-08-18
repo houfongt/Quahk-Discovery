@@ -41,7 +41,7 @@
                     <span class="helper-text" data-error="必填">必填</span> 
                 </div>
                 <div class="input-field">
-                    <center><a class="waves-effect waves-light green accent-4 btn" onclick="getLocation()">自動獲取位置</a></center>
+                    <center><a class="waves-effect waves-light green accent-4 btn" id="autoLocationBtn" onclick="startMap()">自動獲取位置</a></center>
                 </div><br>
         
             </div>
@@ -76,11 +76,12 @@
   <!-- Cancel Modal -->
         <div id="cancelModel" class="modal">
           <div class="modal-content">
-            <h4>Are you sure to cancel?</h4>
-            <p>All ricky you have entered will be deleted.</p>
+            <h4>你確定嗎？</h4>
+            <p>你輸入的所有資料將被刪除！</p>
           </div>
           <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat closeBtn_Actions">Agree</a>
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">返回</a>
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat closeBtn_Actions">確定</a>
           </div>
         </div>
 
@@ -88,6 +89,26 @@
           <div class="modal-content">
             <h4>Warning</h4>
             <p>Please provide all the needed informations.</p>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+          </div>
+        </div>
+
+        <div id="mapError" class="modal">
+          <div class="modal-content">
+            <h4>抱歉！</h4>
+            <p>您的裝置似乎不能夠自動獲取地理位置，但您可以嘗試自己選擇位置。</p>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">好</a>
+          </div>
+        </div>
+
+        <div id="mapModel" class="modal modal-fixed-footer">
+          <div class="modal-content">
+            <h4>Warning</h4>
+            <div id="map"></div>
           </div>
           <div class="modal-footer">
             <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
@@ -152,11 +173,12 @@
 
         </script>
 
-        <!--<script src="https://api.quahk.com/3rdmwdsc/scrollPage.js"></script>-->
-        <script src="js/getLocation.js"></script>
+        <!--<script src="https://api.quahk.com/3rdmwdsc/scrollPage.js"></script>
+        <script src="js/getLocation.js"></script> -->
+        <script src="js/map.js"></script>
         <script src="js/switchPage.js"></script>
         <script src="js/scrollPage.js"></script>
-        <script src="js/map.js"></script>
+        
         
         <!-- Loading Page -->
         <script>
@@ -165,6 +187,9 @@
         })
         </script>
 
+        <script defer 
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkL_kdAxf16jL8gYWZubOhVkfsApIwO28" type="text/javascript">
+        </script>
         <script src="js/map.js"></script>
            
                <!-- The core Firebase JS SDK is always required and must be listed first -->
