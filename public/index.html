@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
   <head>
     <link rel="stylesheet" href="css/style.css" />
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -16,9 +16,33 @@
       type="text/javascript"
       src="https://api.quahk.com/public_js/materialize.min.js"
     ></script>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-MF65WCX");
+    </script>
+    <!-- End Google Tag Manager -->
   </head>
 
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-MF65WCX"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden;"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <div class="app-bar-bottom">
       <a
         class="btn-floating btn-large waves-effect waves-light red"
@@ -95,6 +119,19 @@
           <label for="textarea1">意見</label>
         </div>
         <br />
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>上傳</span>
+            <input type="file" multiple accept="image/*" />
+          </div>
+          <div class="file-path-wrapper">
+            <input
+              class="file-path validate"
+              type="text"
+              placeholder="上傳一或多張圖片"
+            />
+          </div>
+        </div>
       </div>
       <div class="form-block"></div>
       <a
@@ -165,7 +202,9 @@
         <p id="mapErrorReason">錯誤原因：裝置不支援HTML5 GEOLOCATION</p>
       </div>
       <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat">好</a>
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat"
+          >好</a
+        >
       </div>
     </div>
 

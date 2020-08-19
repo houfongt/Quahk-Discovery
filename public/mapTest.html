@@ -1,37 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Map Test</title>
     <style>
-         html, body {
+      html,
+      body {
         height: 100%;
         margin: 0;
         padding: 0;
-        }
+      }
 
-        #map {
-            height: 400px;
-            width: 100%;
-        }
+      #map {
+        height: 400px;
+        width: 100%;
+      }
     </style>
-     
-</head>
-<body>
-
+  </head>
+  <body>
     <h3>Google Map API</h3>
     <div id="map"></div>
 
     <form method="post">
-        <input type="text" id="lat" ><br>
-        <input type="text" id="lng" >
+      <input type="text" id="lat" /><br />
+      <input type="text" id="lng" />
     </form>
-      
-    <script defer 
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkL_kdAxf16jL8gYWZubOhVkfsApIwO28&callback=initMap" type="text/javascript">
-    </script>
+
+    <script
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkL_kdAxf16jL8gYWZubOhVkfsApIwO28&callback=initMap"
+      type="text/javascript"
+    ></script>
     <script src="js/map.js"></script>
-      
-</body>
+  </body>
 </html>
