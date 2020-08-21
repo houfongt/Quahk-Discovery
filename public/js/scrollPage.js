@@ -7,7 +7,7 @@
         formPage = $('.form-page'),
         contentPage = $('.app-bar-bottom'),
         animSpeed = 250,
-        openBtn = $('#nav-btn'),
+        openBtn = $('#nav-btn1'),
         closeBtn = $('.closeBtn'),
         closeBtnActions = $('.closeBtn_Actions');
 
@@ -17,6 +17,7 @@
     });
 
     openBtn.on('click', function (e) {
+        $('#navbar').fadeOut('fast');
         formPage.animate({ 'top': 0 }, animSpeed);
         contentPage.animate({ 'margin-top': windowH + 'px' }, animSpeed);
         e.preventDefault();
@@ -51,6 +52,7 @@
         $('#form1Next').css('display', 'inline');
         
         // loader out and lift the whole form out
+        $('#navbar').fadeIn('slow');
         $('.loader-wrapper').fadeOut('slow');
         formPage.animate({ 'top': -windowH + 'px' }, animSpeed);
         contentPage.animate({ 'margin-top': 0 }, animSpeed);

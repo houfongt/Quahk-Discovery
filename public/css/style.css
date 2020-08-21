@@ -4,9 +4,27 @@ html {
   margin: 0;
 }
 
+.nav-wrapper {
+  background:#42a5f5;
+}
+
 #map {
   height: 50vh;
   width: auto;
+}
+
+#fixed-action-btn {
+  box-sizing: content-box;
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  left: 50%;
+  top: -70%;
+  transform: translateX(-50%);
 }
 
 #nav-btn {

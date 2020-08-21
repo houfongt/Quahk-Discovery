@@ -16,39 +16,47 @@
       type="text/javascript"
       src="https://api.quahk.com/public_js/materialize.min.js"
     ></script>
-    <!-- Google Tag Manager -->
-    <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-MF65WCX");
-    </script>
-    <!-- End Google Tag Manager -->
   </head>
 
   <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-MF65WCX"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden;"
-      ></iframe
-    ></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+    <!-- Header -->
+    <div class="navbar-fixed" id="navbar">
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo center">動態圈</a>
+        </div>
+      </nav>
+    </div>
+
     <div class="app-bar-bottom">
-      <a
-        class="btn-floating btn-large waves-effect waves-light red"
-        id="nav-btn"
-        ><i class="material-icons">add</i></a
-      >
+      <div class="fixed-action-btn" id="fixed-action-btn">
+        <a class="btn-floating btn-large waves-effect waves-light red">
+          <i class="large material-icons">expand_less</i>
+        </a>
+        <ul>
+          <li>
+            <a class="btn-floating blue" id="nav-btn1"
+              ><i class="material-icons">add</i></a
+            >
+          </li>
+          <!--
+          <li>
+            <a class="btn-floating yellow darken-1"
+              ><i class="material-icons">format_quote</i></a
+            >
+          </li>
+          <li>
+            <a class="btn-floating green"
+              ><i class="material-icons">publish</i></a
+            >
+          </li>
+          <li>
+            <a class="btn-floating blue"
+              ><i class="material-icons">attach_file</i></a
+            >
+          </li>
+        --></ul>
+      </div>
     </div>
 
     <form class="form-page">
@@ -131,6 +139,22 @@
               placeholder="上傳一或多張圖片"
             />
           </div>
+        </div>
+        <br />
+        <div class="row">
+        
+          <i class="material-icons prefix">star</i>
+          
+          <div id="rating">
+            <i class="material-icons">star_border</i>
+            <i class="material-icons">star_border</i>
+            <i class="material-icons">star_border</i>
+            <i class="material-icons">star_border</i>
+            <i class="material-icons">star_border</i>
+          </div>
+         <label for="rating">Rating</label>
+          
+        
         </div>
       </div>
       <div class="form-block"></div>
@@ -273,6 +297,13 @@
     </div>
 
     <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function () {
+        var elems = document.querySelectorAll(".fixed-action-btn");
+        var instances = M.FloatingActionButton.init(elems, {
+          hoverEnabled: false,
+        });
+      });
+
       document.addEventListener("DOMContentLoaded", function () {
         var elems = document.querySelectorAll(".modal");
         var instances = M.Modal.init(elems);
