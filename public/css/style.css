@@ -85,6 +85,32 @@ html {
   padding: 0;
 }
 
+#ratingBox {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  
+}
+
+#ratingStar {
+  flex:0 1 45px;
+}
+
+#ratingStars small {
+  color: #9e9e9e;
+  height: 22px;
+  font-size: 0.8rem;
+}
+
+#ratingStars {
+  flex:0 1 auto;
+  flex-wrap: nowrap;
+}
+
+#ratingStars div {
+  padding: 12px 0px 0px 0px;
+}
+
 .form-block {
   position: absolute;
   display: inline-block;
