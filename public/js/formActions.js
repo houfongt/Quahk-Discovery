@@ -84,7 +84,7 @@ finalSubmit.on('click', function (e) {
       let docId = docRef.id;
       console.log(document.getElementById('photosUpload').files.length);
       for (let i = 0; i < document.getElementById('photosUpload').files.length; i++) {
-        let imageName =  Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+        let imageName =  Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
         let imageFile = document.getElementById('photosUpload').files[i];
         var storage = firebase.storage();
         var imagesRef = storage.ref('images/' + imageName);
