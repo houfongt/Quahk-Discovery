@@ -371,30 +371,16 @@
     ></script>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
 
     <!-- TODO: Add SDKs for Firebase products that you want to use
              https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-storage.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-performance.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/7.19.0/firebase-analytics.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/7.19.0/firebase-firestore.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/7.17.1/firebase-storage.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/7.19.0/firebase-performance.js"></script>
 
-    <script>
-      // Your web app's Firebase configuration
-      var firebaseConfig = {
-        apiKey: "AIzaSyAG7-yLEWcsPtEgY18yY4v4yGaUui15lvk",
-        authDomain: "quahk-competition-3rdmwdsc.firebaseapp.com",
-        databaseURL: "https://quahk-competition-3rdmwdsc.firebaseio.com",
-        projectId: "quahk-competition-3rdmwdsc",
-        storageBucket: "quahk-competition-3rdmwdsc.appspot.com",
-        messagingSenderId: "768144406056",
-        appId: "1:768144406056:web:40c269b46cd21b67e6e71d",
-        measurementId: "G-6YHSEGHMJV",
-      };
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-      firebase.analytics();
-      var perf = firebase.performance();
+    <script defer src="js/init-firebase.js">
     </script>
   </body>
 </html>

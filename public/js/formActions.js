@@ -3,6 +3,7 @@ let star1 = $('#star1'),
     star3 = $('#star3'),
     star4 = $('#star4'),
     star5 = $('#star5'),
+    finalSubmit = $('#finalSubmit'),
     rating = 0;
 
 star1.on('click', function(e) {
@@ -55,4 +56,9 @@ star5.on('click', function(e) {
     rating = 5;
 });
 
-
+finalSubmit.on('click', function(e) {
+    e.preventDefault();
+    let docName = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    
+    //let docRef = firebase.firebase();
+})
