@@ -6,16 +6,10 @@
     <title>3rdMWDSC - Quahk Competitions</title>
     <link rel="stylesheet" href="css/materialize.min.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <meta charset="UTF-8" />
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-    <script
-      type="text/javascript"
-      src="https://api.quahk.com/public_js/materialize.min.js"
-    ></script>
+    <script type="text/javascript" src="https://api.quahk.com/public_js/materialize.min.js"></script>
   </head>
 
   <body>
@@ -35,9 +29,7 @@
         </a>
         <ul>
           <li>
-            <a class="btn-floating blue" id="nav-btn1"
-              ><i class="material-icons">add</i></a
-            >
+            <a class="btn-floating blue" id="nav-btn1"><i class="material-icons">add</i></a>
           </li>
           <!--
           <li>
@@ -66,49 +58,25 @@
         <br />
         <div class="input-field">
           <i class="material-icons prefix">business</i>
-          <input
-            id="storeName"
-            type="text"
-            class="validate"
-            value=""
-            required
-          />
+          <input id="storeName" type="text" class="validate" value="" required />
           <label for="storeName">商家名稱</label>
           <span class="helper-text" data-error="必填">必填</span>
         </div>
         <br />
         <div class="input-field" id="location_box">
           <i class="material-icons prefix">location_on</i>
-          <input
-            placeholder="可自動獲取位置"
-            id="input_location"
-            type="text"
-            class="validate"
-            value=""
-            required
-          />
+          <input placeholder="可自動獲取位置" id="input_location" type="text" class="validate" value="" required />
           <label for="input_location">商家位置</label>
           <span class="helper-text" data-error="必填">必填</span>
         </div>
         <div class="input-field">
           <i class="material-icons prefix"></i>
-          <input
-            id="decoded_location"
-            type="text"
-            class="validate"
-            value=""
-            readonly="yes"
-          />
+          <input id="decoded_location" type="text" class="validate" value="" readonly="yes" />
           <!--<label for="decoded_location">商家位置</label> -->
         </div>
         <div class="input-field">
           <center>
-            <a
-              class="waves-effect waves-light green accent-4 btn"
-              id="autoLocationBtn"
-              onclick="startMap()"
-              >自動獲取位置</a
-            >
+            <a class="waves-effect waves-light green accent-4 btn" id="autoLocationBtn" onclick="startMap()">自動獲取位置</a>
           </center>
         </div>
         <br />
@@ -119,42 +87,34 @@
         <br />
         <div class="input-field">
           <i class="material-icons prefix">edit</i>
-          <textarea
-            placeholder="這商家的服務，態度如何？"
-            id="textarea1"
-            class="materialize-textarea"
-          ></textarea>
+          <textarea placeholder="這商家的服務，態度如何？" id="textarea1" class="materialize-textarea"></textarea>
           <label for="textarea1">意見</label>
         </div>
-      
+
         <div id="ratingBox">
           <div id="ratingStar">
             <i class="material-icons" style="font-size: 28px;">stars</i>
           </div>
           <div id="ratingStars">
             <small>評分</small>
-            <br>
+            <br />
             <div>
-            <a href="#" id="star1"><i class="material-icons">star_border</i></a>
-            <a href="#" id="star2"><i class="material-icons">star_border</i></a>
-            <a href="#" id="star3"><i class="material-icons">star_border</i></a>
-            <a href="#" id="star4"><i class="material-icons">star_border</i></a>
-            <a href="#" id="star5"><i class="material-icons">star_border</i></a>
-          </div>  
+              <a href="#" id="star1"><i class="material-icons">star_border</i></a>
+              <a href="#" id="star2"><i class="material-icons">star_border</i></a>
+              <a href="#" id="star3"><i class="material-icons">star_border</i></a>
+              <a href="#" id="star4"><i class="material-icons">star_border</i></a>
+              <a href="#" id="star5"><i class="material-icons">star_border</i></a>
+            </div>
           </div>
         </div>
         <br />
         <div class="file-field input-field">
           <div class="btn">
             <span>上傳</span>
-            <input type="file" multiple accept="image/*" />
+            <input type="file" multiple accept="image/*" id="photosUpload" />
           </div>
           <div class="file-path-wrapper">
-            <input
-              class="file-path validate"
-              type="text"
-              placeholder="上傳一或多張圖片"
-            />
+            <input class="file-path validate" type="text" placeholder="上傳一或多張圖片" />
           </div>
         </div>
       </div>
@@ -164,7 +124,7 @@
         <br />
         <p>
           <label>
-            <input type="checkbox" class="filled-in" checked="checked" disabled/>
+            <input type="checkbox" class="filled-in" checked="checked" disabled />
             <span>把這次記錄設成匿名</span>
           </label>
         </p>
@@ -173,16 +133,8 @@
         </p>
       </div>
       <div class="form-block"></div>
-      <a
-        class="btn-large waves-effect btn-flat closeBtn leftBtn"
-        id="formCancelBtn"
-        >取消</a
-      >
-      <a
-        class="next_btn btn-floating btn-large waves-effect waves-light teal lighten-1"
-        id="form1Next"
-        ><i class="material-icons">arrow_forward</i></a
-      >
+      <a class="btn-large waves-effect btn-flat closeBtn leftBtn" id="formCancelBtn">取消</a>
+      <a class="next_btn btn-floating btn-large waves-effect waves-light teal lighten-1" id="form1Next"><i class="material-icons">arrow_forward</i></a>
 
       <a
         class="dropdown-trigger btn-floating btn-large waves-effect waves-light yellow lighten-1 leftBtn"
@@ -210,17 +162,9 @@
         <li><a href="#!" id="backForm2Btn">上一步</a></li>
       </ul>
 
-      <a
-        class="next_btn btn-floating btn-large waves-effect waves-light teal lighten-1"
-        id="form2Next"
-        ><i class="material-icons">arrow_forward</i></a
-      >
+      <a class="next_btn btn-floating btn-large waves-effect waves-light teal lighten-1" id="form2Next"><i class="material-icons">arrow_forward</i></a>
 
-      <a
-        class="next_btn btn-floating btn-large waves-effect waves-light teal lighten-1"
-        id="finalSubmit"
-        ><i class="material-icons">done</i></a
-      >
+      <a class="next_btn btn-floating btn-large waves-effect waves-light teal lighten-1" id="finalSubmit"><i class="material-icons">done</i></a>
     </form>
 
     <!-- Cancel Modal -->
@@ -230,14 +174,8 @@
         <p>你輸入的所有資料將被刪除！</p>
       </div>
       <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat"
-          >返回</a
-        >
-        <a
-          href="#!"
-          class="modal-close waves-effect waves-green btn-flat closeBtn_Actions"
-          >確定</a
-        >
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">返回</a>
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat closeBtn_Actions">確定</a>
       </div>
     </div>
 
@@ -247,9 +185,7 @@
         <p>Please provide all the needed informations.</p>
       </div>
       <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat"
-          >Agree</a
-        >
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
       </div>
     </div>
 
@@ -260,9 +196,7 @@
         <p id="mapErrorReason">錯誤原因：裝置不支援HTML5 GEOLOCATION</p>
       </div>
       <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat"
-          >好</a
-        >
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">好</a>
       </div>
     </div>
 
@@ -272,9 +206,7 @@
         <div id="map"></div>
       </div>
       <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat"
-          >Agree</a
-        >
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
       </div>
     </div>
 
@@ -331,20 +263,20 @@
     </div>
 
     <script type="text/javascript">
-      document.addEventListener("DOMContentLoaded", function () {
-        var elems = document.querySelectorAll(".fixed-action-btn");
+      document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.fixed-action-btn');
         var instances = M.FloatingActionButton.init(elems, {
           hoverEnabled: false,
         });
       });
 
-      document.addEventListener("DOMContentLoaded", function () {
-        var elems = document.querySelectorAll(".modal");
+      document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.modal');
         var instances = M.Modal.init(elems);
       });
 
-      document.addEventListener("DOMContentLoaded", function () {
-        var elems = document.querySelectorAll(".dropdown-trigger");
+      document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.dropdown-trigger');
         var instances = M.Dropdown.init(elems);
       });
     </script>
@@ -355,20 +287,15 @@
     <script src="js/switchPage.js"></script>
     <script src="js/scrollPage.js"></script>
     <script src="js/formActions.js"></script>
-   
 
     <!-- Loading Page -->
     <script>
-      $(window).on("load", function () {
-        $(".loader-wrapper").fadeOut("slow");
+      $(window).on('load', function () {
+        $('.loader-wrapper').fadeOut('slow');
       });
     </script>
 
-    <script
-      defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkL_kdAxf16jL8gYWZubOhVkfsApIwO28"
-      type="text/javascript"
-    ></script>
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkL_kdAxf16jL8gYWZubOhVkfsApIwO28" type="text/javascript"></script>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script defer src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
@@ -380,7 +307,6 @@
     <script defer src="https://www.gstatic.com/firebasejs/7.17.1/firebase-storage.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/7.19.0/firebase-performance.js"></script>
 
-    <script defer src="js/init-firebase.js">
-    </script>
+    <script defer src="js/init-firebase.js"></script>
   </body>
 </html>
