@@ -58,7 +58,27 @@ star5.on('click', function(e) {
 
 finalSubmit.on('click', function(e) {
     e.preventDefault();
-    let docName = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-    
+    let merchantName = document.getElementById('storeName').value;
+    let geopoint = document.getElementById('input_location').value.split(',', 2);
+    let lat = parseFloat(geopoint[0]);
+    let lng = parseFloat(geopoint[1]);
+    let decodedLocation = document.getElementById('decoded_location').value;
+    let merchantComments = document.getElementById('textarea1').value;
+
+    let firestore = firebase.firestore();
+    firestore.collection('merchants').add({
+        name: merchantName,
+        geopoint: new firebase.firestore.GeoPoint(lat, lng),
+        streetName: decodedLocation,
+        comments: merchantComments,
+        rating: rating,
+        editAble: false
+    })
+    .then(function(docRef) {
+        console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function(error) {
+        console.error("Error adding document: ", error);
+    });
     //let docRef = firebase.firebase();
 })
