@@ -158,6 +158,20 @@
           </div>
         </div>
       </div>
+      <div class="form3">
+        <h4>發現中小企</h4>
+        <h5>步驟3之3．你的資料</h5>
+        <br />
+        <p>
+          <label>
+            <input type="checkbox" class="filled-in" checked="checked" disabled/>
+            <span>把這次記錄設成匿名</span>
+          </label>
+        </p>
+        <p class="red-text">
+          你未來將無法變更此記錄
+        </p>
+      </div>
       <div class="form-block"></div>
       <a
         class="btn-large waves-effect btn-flat closeBtn leftBtn"
@@ -171,22 +185,41 @@
       >
 
       <a
-        class="dropdown-trigger btn-floating btn-large waves-effect waves-light teal lighten-1 leftBtn"
+        class="dropdown-trigger btn-floating btn-large waves-effect waves-light yellow lighten-1 leftBtn"
         id="form2OptionsId"
-        data-target="dropdown1"
-        ><i class="material-icons">arrow_back</i></a
+        data-target="form2OptionsDropdown"
+        ><i class="material-icons black-text">arrow_back</i></a
       >
 
       <!-- Dropdown Structure -->
-      <ul id="dropdown1" class="dropdown-content">
+      <ul id="form2OptionsDropdown" class="dropdown-content">
         <li><a href="#cancelModal" class="closeBtn">取消</a></li>
         <li><a href="#!" id="backForm1Btn">上一步</a></li>
+      </ul>
+
+      <a
+        class="dropdown-trigger btn-floating btn-large waves-effect waves-light yellow lighten-1 leftBtn"
+        id="form3OptionsId"
+        data-target="form3OptionsDropdown"
+        ><i class="material-icons black-text">arrow_back</i></a
+      >
+
+      <!-- Dropdown Structure -->
+      <ul id="form3OptionsDropdown" class="dropdown-content">
+        <li><a href="#cancelModal" class="closeBtn">取消</a></li>
+        <li><a href="#!" id="backForm2Btn">上一步</a></li>
       </ul>
 
       <a
         class="next_btn btn-floating btn-large waves-effect waves-light teal lighten-1"
         id="form2Next"
         ><i class="material-icons">arrow_forward</i></a
+      >
+
+      <a
+        class="next_btn btn-floating btn-large waves-effect waves-light teal lighten-1"
+        id="finalSubmit"
+        ><i class="material-icons">done</i></a
       >
     </form>
 
@@ -322,6 +355,7 @@
     <script src="js/switchPage.js"></script>
     <script src="js/scrollPage.js"></script>
     <script src="js/formActions.js"></script>
+   
 
     <!-- Loading Page -->
     <script>
@@ -335,7 +369,6 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkL_kdAxf16jL8gYWZubOhVkfsApIwO28"
       type="text/javascript"
     ></script>
-    <script src="js/map.js"></script>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
@@ -361,7 +394,6 @@
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
-      var storage = firebase.storage();
       var perf = firebase.performance();
     </script>
   </body>

@@ -69,6 +69,10 @@ html {
   display: none;
 }
 
+#form3OptionsId {
+  display: none;
+}
+
 .next_btn {
   position: absolute;
   bottom: -90%;
@@ -128,6 +132,10 @@ html {
   display: none;
 }
 
+#finalSubmit {
+  display: none;
+}
+
 #formCancelBtn {
   display: inline;
 }
@@ -143,6 +151,16 @@ html {
 }
 
 .form2 {
+  position: absolute;
+  bottom: 80%;
+  color: #000;
+  left: 6%;
+  top: 5%;
+  width: 90%;
+  display: none;
+}
+
+.form3 {
   position: absolute;
   bottom: 80%;
   color: #000;

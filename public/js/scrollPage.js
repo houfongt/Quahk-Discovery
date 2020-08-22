@@ -25,10 +25,6 @@
 
     closeBtn.on('click', function (e) {
         $('#cancelModel').modal('open');
-
-       /* formPage.animate({ 'top': -windowH + 'px' }, animSpeed);
-        contentPage.animate({ 'margin-top': 0 }, animSpeed);
-        e.preventDefault(); */
     });
 
     closeBtnActions.on('click', function (e) {
@@ -39,12 +35,12 @@
         // Form2&3 Buttons out
         $('#form2OptionsId').css('display', 'none');
         $('#form2Next').css('display', 'none');
-        /*$('#form3OptionsId').css('display', 'none');
-        $('#finalSubmit').css('display', 'none'); */
+        $('#form3OptionsId').css('display', 'none');
+        $('#finalSubmit').css('display', 'none'); 
        
         // Form2&3 out
         $('.form2').css('display', 'none');
-        //$('.form3').css('display', 'none');
+        $('.form3').css('display', 'none');
 
         // Form1 all Elements In 
         $('.form1').css('display', 'inline-block');
