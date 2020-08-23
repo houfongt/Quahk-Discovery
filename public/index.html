@@ -24,16 +24,15 @@
 
     <section id="app">
       <ul>
-        <div class="row" v-for="merchant in merchants">
+        <div class="row" v-for="(merchant, merchantImage) in (merchants, merchantsImage)">
           <div class="col s12 m7">
         <div  class="card">
-          <div class="card-image" v-for='merchantImage in merchantsImage'>
+          <div class="card-image">
             <img v-bind:src="merchantImage.imageSrc">
             <span class="card-title">{{ merchant.name }}</span>
           </div>
           <div class="card-content">
-            <p>I am a very simple card. I am good at containing small bits of information.
-            I am convenient because I require little markup to use effectively.</p>
+            <p>{{ merchant.rating }}</p>
           </div>
           <div class="card-action">
             <a href="#">This is a link</a>
