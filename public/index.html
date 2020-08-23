@@ -22,6 +22,28 @@
       </nav>
     </div>
 
+    <section id="app">
+      <ul>
+        <div class="row" v-for="merchant in merchants">
+          <div class="col s12 m7">
+        <div  class="card">
+          <div class="card-image" v-for='merchantImage in merchantsImage'>
+            <img v-bind:src="merchantImage.imageSrc">
+            <span class="card-title">{{ merchant.name }}</span>
+          </div>
+          <div class="card-content">
+            <p>I am a very simple card. I am good at containing small bits of information.
+            I am convenient because I require little markup to use effectively.</p>
+          </div>
+          <div class="card-action">
+            <a href="#">This is a link</a>
+          </div>
+        </div>
+        </div>
+      </div>
+      </ul>
+    </section>
+
     <div class="app-bar-bottom">
       <div class="fixed-action-btn" id="fixed-action-btn">
         <a class="btn-floating btn-large waves-effect waves-light red">
@@ -136,12 +158,7 @@
       <a class="btn-large waves-effect btn-flat closeBtn leftBtn" id="formCancelBtn">取消</a>
       <a class="next_btn btn-floating btn-large waves-effect waves-light teal lighten-1" id="form1Next"><i class="material-icons">arrow_forward</i></a>
 
-      <a
-        class="dropdown-trigger btn-floating btn-large waves-effect waves-light yellow lighten-1 leftBtn"
-        id="form2OptionsId"
-        data-target="form2OptionsDropdown"
-        ><i class="material-icons black-text">arrow_back</i></a
-      >
+      <a class="dropdown-trigger btn-floating btn-large waves-effect waves-light yellow lighten-1 leftBtn" id="form2OptionsId" data-target="form2OptionsDropdown"><i class="material-icons black-text">arrow_back</i></a>
 
       <!-- Dropdown Structure -->
       <ul id="form2OptionsDropdown" class="dropdown-content">
@@ -149,12 +166,7 @@
         <li><a href="#!" id="backForm1Btn">上一步</a></li>
       </ul>
 
-      <a
-        class="dropdown-trigger btn-floating btn-large waves-effect waves-light yellow lighten-1 leftBtn"
-        id="form3OptionsId"
-        data-target="form3OptionsDropdown"
-        ><i class="material-icons black-text">arrow_back</i></a
-      >
+      <a class="dropdown-trigger btn-floating btn-large waves-effect waves-light yellow lighten-1 leftBtn" id="form3OptionsId" data-target="form3OptionsDropdown"><i class="material-icons black-text">arrow_back</i></a>
 
       <!-- Dropdown Structure -->
       <ul id="form3OptionsDropdown" class="dropdown-content">
@@ -308,5 +320,8 @@
     <script defer src="https://www.gstatic.com/firebasejs/7.19.0/firebase-performance.js"></script>
 
     <script defer src="js/init-firebase.js"></script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script defer src="js/app.js"></script>
   </body>
 </html>
