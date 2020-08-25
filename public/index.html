@@ -22,12 +22,12 @@
       </nav>
     </div>
 
-    <section id="app">
-      <ul>
-        <div class="row" v-for="(merchant, merchantImage) in (merchants, merchantsImage)">
+    <div id="app">
+      
+        <div class="row" v-for="merchant in merchants">
           <div class="col s12 m7">
         <div  class="card">
-          <div class="card-image">
+          <div class="card-image" v-for="merchantImage in merchantsImage">
             <img v-bind:src="merchantImage.imageSrc">
             <span class="card-title">{{ merchant.name }}</span>
           </div>
@@ -40,9 +40,7 @@
         </div>
         </div>
       </div>
-      </ul>
-    </section>
-
+    </div>
     <div class="app-bar-bottom">
       <div class="fixed-action-btn" id="fixed-action-btn">
         <a class="btn-floating btn-large waves-effect waves-light red">
@@ -290,6 +288,10 @@
         var elems = document.querySelectorAll('.dropdown-trigger');
         var instances = M.Dropdown.init(elems);
       });
+
+      $(document).ready(function(){
+    $('.scrollspy').scrollSpy();
+  });
     </script>
 
     <!--<script src="https://api.quahk.com/3rdmwdsc/scrollPage.js"></script>
