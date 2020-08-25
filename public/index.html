@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <meta charset="UTF-8" />
     <!--<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>-->
-    <script type="text/javascript" src="https://api.quahk.com/public_js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
   </head>
 
   <body>
@@ -26,7 +26,7 @@
       
         <div class="row" v-for="merchant in merchants">
           <div class="col s12 m7">
-        <div  class="card">
+        <div class="card">
           <div class="card-image" v-for="merchantImage in merchantsImage">
             <img v-bind:src="merchantImage.imageSrc">
             <span class="card-title">{{ merchant.name }}</span>
@@ -41,6 +41,7 @@
         </div>
       </div>
     </div>
+
     <div class="app-bar-bottom">
       <div class="fixed-action-btn" id="fixed-action-btn">
         <a class="btn-floating btn-large waves-effect waves-light red">
@@ -307,22 +308,22 @@
         $('.loader-wrapper').fadeOut('slow');
       });
     </script>
-
+ 
     <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkL_kdAxf16jL8gYWZubOhVkfsApIwO28" type="text/javascript"></script>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script defer src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+    <script src="/__/firebase/7.19.0/firebase-app.js"></script>
 
     <!-- TODO: Add SDKs for Firebase products that you want to use
              https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script defer src="https://www.gstatic.com/firebasejs/7.19.0/firebase-analytics.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/7.19.0/firebase-firestore.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/7.17.1/firebase-storage.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/7.19.0/firebase-performance.js"></script>
+    <script src="/__/firebase/7.19.0/firebase-analytics.js"></script>
+    <script src="/__/firebase/7.19.0/firebase-firestore.js"></script>
+    <script src="/__/firebase/7.17.1/firebase-storage.js"></script>
+    <script src="/__/firebase/7.19.0/firebase-performance.js"></script>
 
-    <script defer src="js/init-firebase.js"></script>
+    <script src="/__/firebase/init.js"></script>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script defer src="js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/app.js"></script>
   </body>
 </html>

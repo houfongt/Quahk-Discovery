@@ -11,21 +11,20 @@
         closeBtn = $('.closeBtn'),
         closeBtnActions = $('.closeBtn_Actions');
 
-        /*
+        
     formPage.css({
         height: windowH + 'px',
         top: -windowH + 'px'
     });
-    */  
+    
 
     openBtn.on('click', function (e) {
         $('#navbar').fadeOut('fast');
         formPage.animate({ 'top': 0 }, animSpeed);
-        //contentPage.animate({ 'margin-top': windowH + 'px' }, animSpeed);
+        contentPage.animate({ 'margin-top': windowH + 'px' }, animSpeed);
         window.scrollTo(0, 0);
         $('#app').hide();
-       // formPage.css('overflow-y', 'hidden');
-        console.log(window.pageYOffset);
+        //console.log(window.pageYOffset);
         e.preventDefault();
     });
 
@@ -58,7 +57,7 @@
         $('.loader-wrapper').fadeOut('slow');
         formPage.animate({ 'top': -100 + '%' }, animSpeed);
         $('#app').show();
-        //contentPage.animate({ 'margin-top': 0 }, animSpeed);
+        contentPage.animate({ 'margin-top': 0 }, animSpeed);
         e.preventDefault();
     });
 
