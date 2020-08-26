@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 Vue.directive("trim", {
   inserted: function(el) {
     var str = el.innerHTML;
-    var resultString = str.split(' ').slice(0, 15).join(" ") + "...";
+    var resultString = str.split('').slice(0, 15).join("") + "...";
     el.innerHTML = resultString
   }
 });

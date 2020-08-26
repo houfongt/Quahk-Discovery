@@ -42,7 +42,7 @@
         </div>
       </div>
     </div>
-
+   
     <div class="app-bar-bottom">
       <div class="fixed-action-btn" id="fixed-action-btn">
         <a class="btn-floating btn-large waves-effect waves-light red">
@@ -72,11 +72,13 @@
       </div>
     </div>
 
-    <form class="form-page">
+
+    <form class="form-page" method="POST" enctype="multipart/form-data">
       <div class="form1">
         <h4>發現中小企</h4>
         <h5>步驟3之1．商家資料(一)</h5>
         <br />
+       
         <div class="input-field">
           <i class="material-icons prefix">business</i>
           <input id="storeName" type="text" class="validate" value="" required />
@@ -132,7 +134,7 @@
         <div class="file-field input-field">
           <div class="btn">
             <span>上傳</span>
-            <input type="file" multiple accept="image/*" id="photosUpload" />
+            <input type="file" name="attachment" multiple accept="image/*" id="photosUpload" />
           </div>
           <div class="file-path-wrapper">
             <input class="file-path validate" type="text" placeholder="上傳一或多張圖片" />

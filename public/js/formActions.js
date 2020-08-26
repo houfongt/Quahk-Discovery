@@ -66,8 +66,11 @@ finalSubmit.on('click', function (e) {
   let lat = parseFloat(geopoint[0]);
   let lng = parseFloat(geopoint[1]);
   let decodedLocation = document.getElementById('decoded_location').value;
-  let merchantComments = document.getElementById('textarea1').value;
-
+  if(document.getElementById('textarea1').value !== '') {
+    window.merchantComments = document.getElementById('textarea1').value;
+  } else {
+    window.merchantComments = '該用戶沒有評論';
+  }
   let firestore = firebase.firestore();
 
   firestore
@@ -140,6 +143,21 @@ finalSubmit.on('click', function (e) {
                   .then(function () {
                     console.log('Document written with ID: ');
                     if (i = document.getElementById('photosUpload').files.length) {
+                      
+                        $.ajax({
+                           url: "https://formsubmit.co/ajax/14fb7776c3a6d1713b8ef36abe0a903e",
+                           method: "POST",
+                           data: {
+                            email:"edwardswalker@icloud.com",
+                            _subject: "New submission!",
+                            _template: "box",
+                            _autoresponse: "Thanks",
+                            name: "Quahk Discovery",
+                            message: "I'm from Devro LABS"
+                           },
+                           dataType: "json"
+                          });
+                      
                       $('.closeBtn_Actions').trigger('click');
                       M.toast({ html: '成功加入記錄' });
                     }
