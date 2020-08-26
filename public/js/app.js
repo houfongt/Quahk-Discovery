@@ -1,3 +1,8 @@
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.getElementById('welcomeModal');
+  var instances = M.Modal.init(elems, {dismissible: false});
+});
+
 Vue.directive("trim", {
   inserted: function(el) {
     var str = el.innerHTML;
@@ -37,3 +42,15 @@ var app = new Vue({
     });
   },
 });
+
+function firstLaunch() {
+  if (localStorage.getItem('firstLaunch') == 'true') {
+    
+  } else {
+    $('#welcomeModal').modal('open');
+  }
+}
+
+function agreeTerms() {
+  localStorage.setItem('firstLaunch', 'true');
+}
