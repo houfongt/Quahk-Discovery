@@ -69,6 +69,7 @@ finalSubmit.on('click', function (e) {
   let merchantComments = document.getElementById('textarea1').value;
 
   let firestore = firebase.firestore();
+
   firestore
     .collection('merchants')
     .add({
@@ -85,16 +86,19 @@ finalSubmit.on('click', function (e) {
       console.log(document.getElementById('photosUpload').files.length);
       if (document.getElementById('photosUpload').files.length > 0) {
         for (let i = 0; i < document.getElementById('photosUpload').files.length; i++) {
-          let imageName = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+          let imageRefName = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
           let imageFile = document.getElementById('photosUpload').files[i];
+          let imageName = 'imageSrc' + i;
           var storage = firebase.storage();
-          var imagesRef = storage.ref('images/' + imageName);
+          var imagesRef = storage.ref('images/' + imageRefName);
 
           var file = imagesRef.put(imageFile);
 
           console.log(docId);
 
-          file.on(firebase.storage.TaskEvent.STATE_CHANGED,function (snapshot) {
+          file.on(
+            firebase.storage.TaskEvent.STATE_CHANGED,
+            function (snapshot) {
               // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
               var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
               console.log('Upload is ' + progress + '% done');
@@ -106,8 +110,8 @@ finalSubmit.on('click', function (e) {
                   console.log('Upload is running');
                   break;
               }
-            }, function (error) {
-
+            },
+            function (error) {
               // A full list of error codes is available at
               // https://firebase.google.com/docs/storage/web/handle-errors
               switch (error.code) {
@@ -119,29 +123,33 @@ finalSubmit.on('click', function (e) {
                   // User canceled the upload
                   break;
 
-    
-
-    case 'storage/unknown':
-      // Unknown error occurred, inspect error.serverResponse
-      break;
-        }
-      }
-            , function() {
-            file.snapshot.ref.getDownloadURL().then(function (url) {
-              //console.log(downloadURL);
-              firestore.collection('merchants').doc(docId).collection('images').add({
-                  imageSrc: url,
-                })
-                .then(function (docRef) {
-                  console.log('Document written with ID: ', docRef.id);
-                  $('.closeBtn_Actions').trigger('click');
-                  M.toast({ html: '成功加入記錄' });
-                })
-                .catch(function (error) {
-                  console.error('Error adding document: ', error);
-                });
-            });
-          });
+                case 'storage/unknown':
+                  // Unknown error occurred, inspect error.serverResponse
+                  break;
+              }
+            },
+            function () {
+              file.snapshot.ref.getDownloadURL().then(function (url) {
+                //console.log(downloadURL);
+                firestore
+                  .collection('merchants')
+                  .doc(docId)
+                  .update({
+                    [imageName]: url,
+                  })
+                  .then(function () {
+                    console.log('Document written with ID: ');
+                    if (i = document.getElementById('photosUpload').files.length) {
+                      $('.closeBtn_Actions').trigger('click');
+                      M.toast({ html: '成功加入記錄' });
+                    }
+                  })
+                  .catch(function (error) {
+                    console.error('Error adding document: ', error);
+                  });
+              });
+            }
+          );
         }
       } else {
         $('.closeBtn_Actions').trigger('click');

@@ -23,21 +23,22 @@
     </div>
 
     <div id="app">
-      
-        <div class="row" v-for="merchant in merchants">
-          <div class="col s12 m7">
-        <div class="card">
-          <div class="card-image" v-for="merchantImage in merchantsImage">
-            <img v-bind:src="merchantImage.imageSrc">
-            <span class="card-title">{{ merchant.name }}</span>
+      <div class="row" v-for="merchant in merchants">
+        <div class="col s12 m12 l6 xl6">
+          <div class="card hoverable">
+            <div class="card-image">
+              <img v-bind:src="merchant.imageSrc0" />
+            </div>
+            <div class="card-content">
+              <span class="card-title">{{ merchant.name }}</span>
+              <p>地址：{{ merchant.streetName }}</p>
+              <p>用戶評分：{{ merchant.rating }}星</p>
+              <p v-trim>用戶意見：{{ merchant.comments }}</p>
+            </div>
+            <div class="card-action">
+              <a href="#">查看更多</a>
+            </div>
           </div>
-          <div class="card-content">
-            <p>{{ merchant.rating }}</p>
-          </div>
-          <div class="card-action">
-            <a href="#">This is a link</a>
-          </div>
-        </div>
         </div>
       </div>
     </div>
@@ -290,9 +291,9 @@
         var instances = M.Dropdown.init(elems);
       });
 
-      $(document).ready(function(){
-    $('.scrollspy').scrollSpy();
-  });
+      $(document).ready(function () {
+        $('.scrollspy').scrollSpy();
+      });
     </script>
 
     <!--<script src="https://api.quahk.com/3rdmwdsc/scrollPage.js"></script>
@@ -308,20 +309,35 @@
         $('.loader-wrapper').fadeOut('slow');
       });
     </script>
- 
+
     <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkL_kdAxf16jL8gYWZubOhVkfsApIwO28" type="text/javascript"></script>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="/__/firebase/7.19.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
 
     <!-- TODO: Add SDKs for Firebase products that you want to use
              https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="/__/firebase/7.19.0/firebase-analytics.js"></script>
-    <script src="/__/firebase/7.19.0/firebase-firestore.js"></script>
-    <script src="/__/firebase/7.17.1/firebase-storage.js"></script>
-    <script src="/__/firebase/7.19.0/firebase-performance.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-performance.js"></script>
 
-    <script src="/__/firebase/init.js"></script>
+    <script>
+      var firebaseConfig = {
+        apiKey: 'AIzaSyAG7-yLEWcsPtEgY18yY4v4yGaUui15lvk',
+        authDomain: 'quahk-competition-3rdmwdsc.firebaseapp.com',
+        databaseURL: 'https://quahk-competition-3rdmwdsc.firebaseio.com',
+        projectId: 'quahk-competition-3rdmwdsc',
+        storageBucket: 'quahk-competition-3rdmwdsc.appspot.com',
+        messagingSenderId: '768144406056',
+        appId: '1:768144406056:web:40c269b46cd21b67e6e71d',
+        measurementId: 'G-6YHSEGHMJV',
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+      var perf = firebase.performance();
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="js/app.js"></script>

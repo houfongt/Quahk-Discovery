@@ -1,3 +1,12 @@
+Vue.directive("trim", {
+  inserted: function(el) {
+    var str = el.innerHTML;
+    var resultString = str.split(' ').slice(0, 15).join(" ") + "...";
+    el.innerHTML = resultString
+  }
+});
+
+
 var app = new Vue({
   el: '#app',
   data: {
