@@ -20,10 +20,33 @@
     </div>
 
     <div class="container" id="postHtml">
-        <div class="col s12" v-for="merchant in merchants">
-            <h5 class="left-align">{{ merchantName }}</h5>
-          </div>
+      <div class="col s12" v-for="merchant in merchantData">
+        <h4 class="left-align">{{ merchant.name }}</h4>
+
+        <i class="material-icons left">location_on</i>
+
+        <p class="left-align">{{ merchant.geopoint.latitude }}, {{ merchant.geopoint.longitude }}</p>
+
+        <i class="material-icons left">n</i>
+        <p class="left-align">{{ merchant.streetName }}</p>
+
+        <img v-bind:src="merchant.imageSrc0" class="responsive-img" />
+
+        <hr>
+
+        <i class="material-icons left">comments</i>
+        <span class="left-align">意見：</span>
+
+        <p class="left-align">{{ merchant.comments }}</p>
+
+        
+      </div>
     </div>
+    <div class="container" style="margin-top: 100px;">
+        <div class="col s12">
+          <h5 class="center-align">沒有更多內容了。</h5>
+        </div>
+      </div>
 
     <div class="app-bar-bottom">
       <div class="fixed-action-btn" id="fixed-action-btn">

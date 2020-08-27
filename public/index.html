@@ -36,13 +36,13 @@
               <p v-trim>用戶意見：{{ merchant.comments }}</p>
             </div>
             <div class="card-action">
-              <a v-bind:href="'http://127.0.0.1:5500/public/posts.html?' + merchant.id">查看更多</a>
+              <a v-bind:href="'https://quahk-competition-3rdmwdsc.web.app/posts.html?' + merchant.id">查看更多</a>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="container">
+      <div class="container" style="margin-top: 100px;">
         <div class="col s12">
           <h5 class="center-align">沒有更多動態了。</h5>
         </div>
@@ -160,6 +160,19 @@
         <p class="red-text">
           你未來將無法變更此記錄
         </p>
+        <p>
+          <label>
+            <input type="checkbox" class="filled-in" checked="checked" />
+            <span>發送一份副本給我</span>
+          </label>
+        </p>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">email</i>
+            <input id="email" type="email" class="validate">
+            <label for="email">Email</label>
+          </div>
+        </div>
       </div>
       <div class="form-block"></div>
       <a class="btn-large waves-effect btn-flat closeBtn leftBtn" id="formCancelBtn">取消</a>
