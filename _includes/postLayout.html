@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/materialize.min.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <title>{{ merchantId }} - Quahk Discovery</title>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+  </head>
+  <body>
+    <div class="navbar-fixed" id="navbar">
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo center">動態圈</a>
+        </div>
+      </nav>
+    </div>
+
+    {{ content }}
+
+    <div class="app-bar-bottom">
+      <div class="fixed-action-btn" id="fixed-action-btn">
+        <a class="btn-floating btn-large waves-effect waves-light red">
+          <i class="large material-icons">expand_less</i>
+        </a>
+        <ul>
+          <li>
+            <a class="btn-floating blue" href="index.html"><i class="material-icons">add</i></a>
+          </li>
+          
+            <li>
+              <a class="btn-floating yellow darken-1"
+                ><i class="material-icons">format_quote</i></a
+              >
+            </li>
+            <!--
+            <li>
+              <a class="btn-floating green"
+                ><i class="material-icons">publish</i></a
+              >
+            </li>
+            <li>
+              <a class="btn-floating blue"
+                ><i class="material-icons">attach_file</i></a
+              >
+            </li>
+          -->
+        </ul>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.fixed-action-btn');
+        var instances = M.FloatingActionButton.init(elems, {
+          hoverEnabled: false,
+        });
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems);
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.dropdown-trigger');
+        var instances = M.Dropdown.init(elems);
+      });
+    </script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+             https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-performance.js"></script>
+
+    <script>
+      var firebaseConfig = {
+        apiKey: 'AIzaSyAG7-yLEWcsPtEgY18yY4v4yGaUui15lvk',
+        authDomain: 'quahk-competition-3rdmwdsc.firebaseapp.com',
+        databaseURL: 'https://quahk-competition-3rdmwdsc.firebaseio.com',
+        projectId: 'quahk-competition-3rdmwdsc',
+        storageBucket: 'quahk-competition-3rdmwdsc.appspot.com',
+        messagingSenderId: '768144406056',
+        appId: '1:768144406056:web:40c269b46cd21b67e6e71d',
+        measurementId: 'G-6YHSEGHMJV',
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+      var perf = firebase.performance();
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </body>
+</html>

@@ -36,9 +36,15 @@
               <p v-trim>用戶意見：{{ merchant.comments }}</p>
             </div>
             <div class="card-action">
-              <a href="#">查看更多</a>
+              <a v-bind:href="'http://127.0.0.1:5500/public/posts.html?' + merchant.id">查看更多</a>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="col s12">
+          <h5 class="center-align">沒有更多動態了。</h5>
         </div>
       </div>
     </div>

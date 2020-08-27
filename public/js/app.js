@@ -12,7 +12,7 @@ Vue.directive("trim", {
 });
 
 
-var app = new Vue({
+var indexApp = new Vue({
   el: '#app',
   data: {
     merchants: [],
@@ -42,6 +42,7 @@ var app = new Vue({
     });
   },
 });
+
 
 function firstLaunch() {
   if (localStorage.getItem('firstLaunch') == 'true') {
