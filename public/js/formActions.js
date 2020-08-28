@@ -144,8 +144,7 @@ finalSubmit.on('click', function (e) {
               // Unknown error occurred, inspect error.serverResponse
               break;
           }
-        },
-        function () {
+        }, function () {
           console.log(imagesURLPath);
         }
       );
@@ -166,6 +165,7 @@ finalSubmit.on('click', function (e) {
       editAble: false,
     })
     .then(function (docRef) {
+      
       console.log('Document written with ID: ', docRef.id);
       let docId = docRef.id;
       if (imagesURLPath[0] != undefined) {
