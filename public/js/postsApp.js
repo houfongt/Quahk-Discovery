@@ -10,6 +10,7 @@ var postsApp = new Vue({
   data: {
     merchantId: window.location.search.split('?')[1],
     merchantData: [],
+    message: "hello world!"
   },
   mounted() {
     let docId = window.location.search.split('?')[1];

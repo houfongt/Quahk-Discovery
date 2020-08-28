@@ -30,23 +30,21 @@
         <i class="material-icons left">n</i>
         <p class="left-align">{{ merchant.streetName }}</p>
 
-        <img v-bind:src="merchant.imageSrc0" class="responsive-img" />
+        <img v-bind:src="merchant.imageSrc0" class="responsive-img materialboxed" />
 
-        <hr>
+        <hr />
 
         <i class="material-icons left">comments</i>
         <span class="left-align">意見：</span>
 
         <p class="left-align">{{ merchant.comments }}</p>
-
-        
       </div>
     </div>
-    <div class="container" style="margin-top: 100px;">
-        <div class="col s12">
-          <h5 class="center-align">沒有更多內容了。</h5>
-        </div>
+    <div class="container" style="margin-top: 100px">
+      <div class="col s12">
+        <h5 class="center-align"></h5>
       </div>
+    </div>
 
     <div class="app-bar-bottom">
       <div class="fixed-action-btn" id="fixed-action-btn">
@@ -94,6 +92,12 @@
         var elems = document.querySelectorAll('.dropdown-trigger');
         var instances = M.Dropdown.init(elems);
       });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.materialboxed');
+        var instances = M.Materialbox.init(elems);
+      });
+      
     </script>
 
     <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>

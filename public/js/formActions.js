@@ -3,10 +3,12 @@ let star1 = $('#star1'),
   star3 = $('#star3'),
   star4 = $('#star4'),
   star5 = $('#star5'),
+  emailField = $('#emailField'),
+  sendCopyBox = $('#sendCopyBox'),
   finalSubmit = $('#finalSubmit'),
   rating = 0;
 
-star1.on('click', function (e) {
+star1.on('click', (e) => {
   e.preventDefault();
   star1.html('<i class="material-icons">star</i>');
   star2.html('<i class="material-icons">star_border</i>');
@@ -16,7 +18,7 @@ star1.on('click', function (e) {
   rating = 1;
 });
 
-star2.on('click', function (e) {
+star2.on('click', (e) => {
   e.preventDefault();
   star1.html('<i class="material-icons">star</i>');
   star2.html('<i class="material-icons">star</i>');
@@ -26,7 +28,7 @@ star2.on('click', function (e) {
   rating = 2;
 });
 
-star3.on('click', function (e) {
+star3.on('click', (e) => {
   e.preventDefault();
   star1.html('<i class="material-icons">star</i>');
   star2.html('<i class="material-icons">star</i>');
@@ -36,7 +38,7 @@ star3.on('click', function (e) {
   rating = 3;
 });
 
-star4.on('click', function (e) {
+star4.on('click', (e) => {
   e.preventDefault();
   star1.html('<i class="material-icons">star</i>');
   star2.html('<i class="material-icons">star</i>');
@@ -46,7 +48,9 @@ star4.on('click', function (e) {
   rating = 4;
 });
 
-star5.on('click', function (e) {
+
+
+star5.on('click', (e) => {
   e.preventDefault();
   star1.html('<i class="material-icons">star</i>');
   star2.html('<i class="material-icons">star</i>');
@@ -56,10 +60,18 @@ star5.on('click', function (e) {
   rating = 5;
 });
 
+sendCopyBox.on('click', () => {
+  if (document.getElementById('sendCopyBox').checked) {
+    emailField.show();
+  } else {
+    emailField.hide();
+  }
+});
+
 finalSubmit.on('click', function (e) {
   e.preventDefault();
-  $('#finalSubmit').css('display', 'none');
-  $('#form3OptionsId').css('display', 'none');
+  $('#finalSubmit').hide();
+  $('#form3OptionsId').hide();
   $('.loader-wrapper').fadeIn('fast');
   let merchantName = document.getElementById('storeName').value;
   let geopoint = document.getElementById('input_location').value.split(',', 2);
