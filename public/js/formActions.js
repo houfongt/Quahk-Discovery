@@ -3,10 +3,12 @@ let star1 = $('#star1'),
   star3 = $('#star3'),
   star4 = $('#star4'),
   star5 = $('#star5'),
-  emailField = $('#emailField'),
+  emailField = $('#email'),
+  emailBox = $('#emailBox'),
   sendCopyBox = $('#sendCopyBox'),
   finalSubmit = $('#finalSubmit'),
-  rating = 0;
+  emailRating = $('#emailRating'),
+  rating = "該用戶沒有評";
 
 star1.on('click', (e) => {
   e.preventDefault();
@@ -16,6 +18,7 @@ star1.on('click', (e) => {
   star4.html('<i class="material-icons">star_border</i>');
   star5.html('<i class="material-icons">star_border</i>');
   rating = 1;
+  emailRating.val('1分');
 });
 
 star2.on('click', (e) => {
@@ -26,6 +29,7 @@ star2.on('click', (e) => {
   star4.html('<i class="material-icons">star_border</i>');
   star5.html('<i class="material-icons">star_border</i>');
   rating = 2;
+  emailRating.val('2分');
 });
 
 star3.on('click', (e) => {
@@ -36,6 +40,7 @@ star3.on('click', (e) => {
   star4.html('<i class="material-icons">star_border</i>');
   star5.html('<i class="material-icons">star_border</i>');
   rating = 3;
+  emailRating.val('3分');
 });
 
 star4.on('click', (e) => {
@@ -46,9 +51,8 @@ star4.on('click', (e) => {
   star4.html('<i class="material-icons">star</i>');
   star5.html('<i class="material-icons">star_border</i>');
   rating = 4;
+  emailRating.val('4分');
 });
-
-
 
 star5.on('click', (e) => {
   e.preventDefault();
@@ -58,18 +62,27 @@ star5.on('click', (e) => {
   star4.html('<i class="material-icons">star</i>');
   star5.html('<i class="material-icons">star</i>');
   rating = 5;
+  emailRating.val('5分');
 });
 
 sendCopyBox.on('click', () => {
   if (document.getElementById('sendCopyBox').checked) {
-    emailField.show();
+    emailBox.show();
   } else {
-    emailField.hide();
+    emailBox.hide();
   }
 });
 
 finalSubmit.on('click', function (e) {
   e.preventDefault();
+  let emailVal = emailField.val();
+  console.log(emailVal);
+
+  if (emailIsValid(emailVal)) {
+  } else {
+    return;
+  }
+
   $('#finalSubmit').hide();
   $('#form3OptionsId').hide();
   $('.loader-wrapper').fadeIn('fast');
@@ -78,7 +91,7 @@ finalSubmit.on('click', function (e) {
   let lat = parseFloat(geopoint[0]);
   let lng = parseFloat(geopoint[1]);
   let decodedLocation = document.getElementById('decoded_location').value;
-  if(document.getElementById('textarea1').value !== '') {
+  if (document.getElementById('textarea1').value !== '') {
     window.merchantComments = document.getElementById('textarea1').value;
   } else {
     window.merchantComments = '該用戶沒有評論';
@@ -154,25 +167,7 @@ finalSubmit.on('click', function (e) {
                   })
                   .then(function () {
                     console.log('Document written with ID: ');
-                    if (i = document.getElementById('photosUpload').files.length) {
-                      
-                        $.ajax({
-                           url: "https://formsubmit.co/ajax/14fb7776c3a6d1713b8ef36abe0a903e",
-                           method: "POST",
-                           data: {
-                            email:"edwardswalker@icloud.com",
-                            _subject: "New submission!",
-                            _template: "box",
-                            _autoresponse: "Thanks",
-                            name: "Quahk Discovery",
-                            message: "I'm from Devro LABS"
-                           },
-                           dataType: "json"
-                          });
-                      
-                      $('.closeBtn_Actions').trigger('click');
-                      M.toast({ html: '成功加入記錄' });
-                    }
+                    
                   })
                   .catch(function (error) {
                     console.error('Error adding document: ', error);
@@ -180,6 +175,20 @@ finalSubmit.on('click', function (e) {
               });
             }
           );
+
+          if ((i + 1) == document.getElementById('photosUpload').files.length) {
+            /*
+            if (document.getElementById('sendCopyBox').checked) {
+              document.getElementsByClassName('form-page')[0].submit();
+            } else {
+              $('.closeBtn_Actions').trigger('click');
+              M.toast({ html: '成功加入記錄' });
+            }
+            */
+           console.log('true');
+          } else {
+            console.log('false');
+          }
         }
       } else {
         $('.closeBtn_Actions').trigger('click');
@@ -190,3 +199,7 @@ finalSubmit.on('click', function (e) {
       console.error('Error adding document: ', error);
     });
 });
+
+function emailIsValid(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}

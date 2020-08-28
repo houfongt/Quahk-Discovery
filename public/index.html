@@ -32,7 +32,7 @@
             <div class="card-content">
               <span class="card-title">{{ merchant.name }}</span>
               <p>地址：{{ merchant.streetName }}</p>
-              <p>用戶評分：{{ merchant.rating }}星</p>
+              <p>用戶評分：{{ merchant.rating }}分</p>
               <p v-trim>用戶意見：{{ merchant.comments }}</p>
             </div>
             <div class="card-action">
@@ -42,13 +42,13 @@
         </div>
       </div>
 
-      <div class="container" style="margin-top: 100px;">
+      <div class="container" style="margin-top: 100px">
         <div class="col s12">
           <h5 class="center-align">沒有更多動態了。</h5>
         </div>
       </div>
     </div>
-   
+
     <div class="app-bar-bottom">
       <div class="fixed-action-btn" id="fixed-action-btn">
         <a class="btn-floating btn-large waves-effect waves-light red">
@@ -78,29 +78,32 @@
       </div>
     </div>
 
-
-    <form class="form-page" method="POST" enctype="multipart/form-data">
+    <form class="form-page" method="POST"  action="https://formsubmit.co/14fb7776c3a6d1713b8ef36abe0a903e">
+      <input type="hidden" name="_next" value="https://quahk-competition-3rdmwdsc.web.app/index.html?done">
+      <input type="hidden" name="rating" value="你沒有就該商家評分" id="emailRating">
+      <input type="hidden" name="_autoresponse" value="感謝您將記錄提交到Quahk Discovery！根據您的要求，以下是你剛填寫的記錄的副本。">
+      <input type="hidden" name="_template" value="box">
       <div class="form1">
         <h4>發現中小企</h4>
         <h5>步驟3之1．商家資料(一)</h5>
         <br />
-       
+
         <div class="input-field">
           <i class="material-icons prefix">business</i>
-          <input id="storeName" type="text" class="validate" value="" required />
+          <input id="storeName" type="text" class="validate" value="" name="商家名稱" required />
           <label for="storeName">商家名稱</label>
           <span class="helper-text" data-error="必填">必填</span>
         </div>
         <br />
         <div class="input-field" id="location_box">
           <i class="material-icons prefix">location_on</i>
-          <input placeholder="可自動獲取位置" id="input_location" type="text" class="validate" value="" required />
+          <input placeholder="可自動獲取位置" id="input_location" type="text" name="商家位置(坐標)" class="validate" value="" required />
           <label for="input_location">商家位置</label>
           <span class="helper-text" data-error="必填">必填</span>
         </div>
         <div class="input-field">
           <i class="material-icons prefix"></i>
-          <input id="decoded_location" type="text" class="validate" value="" readonly="yes" />
+          <input id="decoded_location" type="text" class="validate" value="" name="商家位置" readonly="yes" />
           <!--<label for="decoded_location">商家位置</label> -->
         </div>
         <div class="input-field">
@@ -116,13 +119,13 @@
         <br />
         <div class="input-field">
           <i class="material-icons prefix">edit</i>
-          <textarea placeholder="這商家的服務，態度如何？" id="textarea1" class="materialize-textarea"></textarea>
+          <textarea placeholder="這商家的服務，態度如何？" id="textarea1" name="意見" class="materialize-textarea"></textarea>
           <label for="textarea1">意見</label>
         </div>
 
         <div id="ratingBox">
           <div id="ratingStar">
-            <i class="material-icons" style="font-size: 28px;">stars</i>
+            <i class="material-icons" style="font-size: 28px">stars</i>
           </div>
           <div id="ratingStars">
             <small>評分</small>
@@ -157,19 +160,18 @@
             <span>把這次記錄設成匿名</span>
           </label>
         </p>
-        <p class="red-text">
-          你未來將無法變更此記錄
-        </p>
+        <p class="red-text">你未來將無法變更此記錄</p>
         <p>
           <label>
-            <input type="checkbox" class="filled-in" id="sendCopyBox" checked="checked"/>
+            <input type="checkbox" class="filled-in" id="sendCopyBox" checked="checked" />
             <span>發送一份副本給我</span>
           </label>
         </p>
-        <div class="row" id="emailField">
-          <div class="input-field col s12">
+
+        <div id="emailBox">
+          <div class="input-field">
             <i class="material-icons prefix">email</i>
-            <input id="email" type="email" class="validate">
+            <input id="email" type="email" name="發送一份副本給以下電子郵件地址" value="" class="validate" />
             <label for="email">Email</label>
           </div>
         </div>
@@ -214,8 +216,7 @@
     <div id="welcomeModal" class="modal">
       <div class="modal-content">
         <h4>歡迎</h4>
-        <p>歡迎來到Quahk Discovery。在這裡，當您發現一些很棒的商店時，歡迎在此處發布您的評分和評論。但是請記住，您需要遵循一些規則： 
-        </p>
+        <p>歡迎來到Quahk Discovery。在這裡，當您發現一些很棒的商店時，歡迎在此處發布您的評分和評論。但是請記住，您需要遵循一些規則：</p>
         <ul>
           <li>1. 請不要在這裡發放垃圾訊息/廣告/自我宣傳。</li>
           <li>2. 請不要發布令人反感的帖子，鏈接，圖片等。</li>
@@ -230,11 +231,11 @@
 
     <div id="missingInfoModel" class="modal">
       <div class="modal-content">
-        <h4>Warning</h4>
-        <p>Please provide all the needed informations.</p>
+        <h4>等等...</h4>
+        <p>請填寫所有必要的信息。</p>
       </div>
       <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">好</a>
       </div>
     </div>
 
@@ -328,7 +329,6 @@
         var elems = document.querySelectorAll('.dropdown-trigger');
         var instances = M.Dropdown.init(elems);
       });
-
     </script>
 
     <script src="js/map.js"></script>
