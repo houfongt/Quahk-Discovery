@@ -74,14 +74,17 @@ sendCopyBox.on('click', () => {
   }
 });
 
-finalSubmit.on('click', function (e) {
+finalSubmit.on('click', async function (e) {
   e.preventDefault();
   let emailVal = emailField.val();
-  console.log(emailVal);
 
-  if (emailIsValid(emailVal)) {
+  if (document.getElementById('sendCopyBox').checked) {
+    if (emailIsValid(emailVal)) {
+    } else {
+      $('#emailFormatErrorModal').modal('open');
+      return;
+    }
   } else {
-    return;
   }
 
   $('#finalSubmit').hide();
@@ -89,118 +92,115 @@ finalSubmit.on('click', function (e) {
   $('.loader-wrapper').fadeIn('fast');
   let merchantName = document.getElementById('storeName').value;
   let geopoint = document.getElementById('input_location').value.split(',', 2);
+  let isEditAble = !document.getElementById('laterEdit').checked;
   let lat = parseFloat(geopoint[0]);
   let lng = parseFloat(geopoint[1]);
-  let imagesURLPath = [];
   let decodedLocation = document.getElementById('decoded_location').value;
   if (document.getElementById('textarea1').value !== '') {
     window.merchantComments = document.getElementById('textarea1').value;
   } else {
     window.merchantComments = '該用戶沒有評論';
   }
+
+  let imageLink = [];
   let firestore = firebase.firestore();
 
+  //console.log(docId);
   if (document.getElementById('photosUpload').files.length > 0) {
     for (let i = 0; i < document.getElementById('photosUpload').files.length; i++) {
-     
-      let imageRefName = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
       let imageFile = document.getElementById('photosUpload').files[i];
-      //let imageName = 'imageSrc' + i;
-      var storage = firebase.storage();
-      var imagesRef = storage.ref('images/' + imageRefName);
 
-      var file = imagesRef.put(imageFile);
-
-      imagesURLPath[i] = 'images/' + imageRefName;
-
-      file.on(
-        firebase.storage.TaskEvent.STATE_CHANGED,
-        function (snapshot) {
-          // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-          var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log('Upload is ' + progress + '% done');
-          switch (snapshot.state) {
-            case firebase.storage.TaskState.PAUSED: // or 'paused'
-              console.log('Upload is paused');
-              break;
-            case firebase.storage.TaskState.RUNNING: // or 'running'
-              console.log('Upload is running');
-              break;
-          }
-        },
-        function (error) {
-          // A full list of error codes is available at
-          // https://firebase.google.com/docs/storage/web/handle-errors
-          switch (error.code) {
-            case 'storage/unauthorized':
-              // User doesn't have permission to access the object
-              break;
-
-            case 'storage/canceled':
-              // User canceled the upload
-              break;
-
-            case 'storage/unknown':
-              // Unknown error occurred, inspect error.serverResponse
-              break;
-          }
-        }, function () {
-          console.log(imagesURLPath);
-        }
-      );
+      await uploadImageAsPromise(imageFile).then((res) => {
+        imageLink[i] = res;
+      });
     }
-  } else {
-    $('.closeBtn_Actions').trigger('click');
-    M.toast({ html: '成功加入記錄' });
-  }
 
-  firestore
-    .collection('merchants')
-    .add({
-      name: merchantName,
-      geopoint: new firebase.firestore.GeoPoint(lat, lng),
-      streetName: decodedLocation,
-      comments: merchantComments,
-      rating: rating,
-      editAble: false,
-    })
-    .then(function (docRef) {
-      
-      console.log('Document written with ID: ', docRef.id);
-      let docId = docRef.id;
-      if (imagesURLPath[0] != undefined) {
-        let storageRef = firebase.storage().ref();
-        for (let i = 0; i < imagesURLPath.length; i++) {
-          let firestore = firebase.firestore();
-          let imageName = 'imageSrc' + i;
-          storageRef.child(imagesURLPath[i]).getDownloadURL().then(function(url) {
-            firestore
+    firestore
+      .collection('merchants')
+      .add({
+        name: merchantName,
+        geopoint: new firebase.firestore.GeoPoint(lat, lng),
+        streetName: decodedLocation,
+        comments: merchantComments,
+        rating: rating,
+        editAble: isEditAble,
+      })
+      .then((docRef) => {
+        console.log('Document written successfully:' + docRef.id);
+        for (let i = 0; i < imageLink.length; i++) {
+          let imageName = 'imageSrc' + [i];
+          firestore
             .collection('merchants')
-            .doc(docId)
+            .doc(docRef.id)
             .update({
-              [imageName]: url
+              [imageName]: imageLink[i],
             })
-            .then(function () {
-              console.log('Document successfully updated!');
+            .then(() => {
+              console.log('Document update successfully, with image link.');
+              if (document.getElementById('sendCopyBox').checked) {
+                document.getElementsByClassName('form-page')[0].submit();
+              } else {
+                $('.closeBtn_Actions').trigger('click');
+                M.toast({ html: '成功加入記錄' });
+              }
             })
-            .catch(function (error) {
-              // The document probably doesn't exist.
-              console.error('Error updating document: ', error);
-            });
-          })
-          
-          
+            .catch((error) => {});
         }
-      } else {
-      }
-    })
-    .catch(function (error) {
-      console.error('Error adding document: ', error);
-    });
-
-  console.log('hello world');
+      })
+      .catch((error) => {
+        // reject(error);
+      });
+  } else {
+    firestore
+      .collection('merchants')
+      .add({
+        name: merchantName,
+        geopoint: new firebase.firestore.GeoPoint(lat, lng),
+        streetName: decodedLocation,
+        comments: merchantComments,
+        rating: rating,
+        imageSrc0: 'assets/noPhoto.png',
+        editAble: isEditAble,
+      })
+      .then(() => {
+        console.log('Document written successfully.');
+        if (document.getElementById('sendCopyBox').checked) {
+          document.getElementsByClassName('form-page')[0].submit();
+        } else {
+          $('.closeBtn_Actions').trigger('click');
+          M.toast({ html: '成功加入記錄' });
+        }
+      });
+  }
 });
 
 function emailIsValid(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+async function uploadImageAsPromise(imageFile) {
+  return new Promise(function (resolve, reject) {
+    let imageRefName = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    var storageRef = firebase.storage().ref('images/' + imageRefName);
+
+    //Upload file
+    var task = storageRef.put(imageFile);
+
+    //Update progress bar
+    task.on(
+      'state_changed',
+      function progress(snapshot) {
+        var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log(percentage);
+      },
+      function error(err) {
+        reject(err);
+      },
+      function complete() {
+        let downloadURL = task.snapshot.ref.getDownloadURL();
+
+        resolve(downloadURL);
+      }
+    );
+  });
 }
