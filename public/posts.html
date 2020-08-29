@@ -10,7 +10,7 @@
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <title>Quahk 發現中小企</title>
   </head>
-  <body>
+  <body onload="checkURL()">
     <div class="navbar-fixed" id="navbar">
       <nav>
         <div class="nav-wrapper">
@@ -20,7 +20,7 @@
     </div>
 
     <div class="container" id="postHtml">
-      <div class="col s12" v-for="merchant in merchantData">
+      <div class="col s12" v-for="merchant in merchantData" >
         <h4 class="left-align">{{ merchant.name }}</h4>
 
         <i class="material-icons left">location_on</i>
@@ -38,6 +38,11 @@
         <span class="left-align">意見：</span>
 
         <p class="left-align">{{ merchant.comments }}</p>
+
+        <div v-for="merchantImage in merchantImages">
+          <img class="responsive-img materialboxed" v-bind:src="merchantImage" />
+          <br>
+        </div>
       </div>
     </div>
     <div class="container" style="margin-top: 100px">
