@@ -45,6 +45,12 @@ function firstLaunch() {
   } else {
     $('#welcomeModal').modal('open');
   }
+
+  if ((location.search).split('?')[1] == 'done') {
+    M.toast({ html: '成功加入記錄' });
+  } else {
+
+  }
 }
 
 function agreeTerms() {

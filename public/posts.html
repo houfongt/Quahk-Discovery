@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="text/javascript" src="js/materialize.min.js"></script>
-    <title id="title"></title>
+    <title>Quahk 發現中小企</title>
   </head>
   <body>
     <div class="navbar-fixed" id="navbar">
@@ -30,7 +30,7 @@
         <i class="material-icons left">n</i>
         <p class="left-align">{{ merchant.streetName }}</p>
 
-        <img v-bind:src="merchant.imageSrc0" class="responsive-img materialboxed" />
+        <img class="responsive-img materialboxed" v-bind:src="merchant.imageSrc0" />
 
         <hr />
 
@@ -76,6 +76,8 @@
     </div>
 
     <script type="text/javascript">
+      M.AutoInit();
+      $('.materialboxed').materialbox();
       document.addEventListener('DOMContentLoaded', function () {
         var elems = document.querySelectorAll('.fixed-action-btn');
         var instances = M.FloatingActionButton.init(elems, {
@@ -83,21 +85,7 @@
         });
       });
 
-      document.addEventListener('DOMContentLoaded', function () {
-        var elems = document.querySelectorAll('.modal');
-        var instances = M.Modal.init(elems);
-      });
-
-      document.addEventListener('DOMContentLoaded', function () {
-        var elems = document.querySelectorAll('.dropdown-trigger');
-        var instances = M.Dropdown.init(elems);
-      });
-
-      document.addEventListener('DOMContentLoaded', function () {
-        var elems = document.querySelectorAll('.materialboxed');
-        var instances = M.Materialbox.init(elems);
-      });
-      
+     
     </script>
 
     <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
