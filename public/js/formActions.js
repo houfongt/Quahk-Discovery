@@ -68,10 +68,10 @@ star5.on('click', (e) => {
 
 sendCopyBox.on('click', () => {
   if (document.getElementById('sendCopyBox').checked) {
-    console.log(document.getElementById('sendCopyBox').checked)
+    console.log(document.getElementById('sendCopyBox').checked);
     emailBox.show();
   } else {
-    console.log(document.getElementById('sendCopyBox').checked)
+    console.log(document.getElementById('sendCopyBox').checked);
     emailBox.hide();
   }
 });
@@ -139,13 +139,6 @@ finalSubmit.on('click', async function (e) {
             })
             .then(() => {
               console.log('Document update successfully, with image link.');
-              if (document.getElementById('sendCopyBox').checked) {
-                console.log(document.getElementById('sendCopyBox').checked);
-                document.getElementsByClassName('form-page')[0].submit();
-              } else {
-                $('.closeBtn_Actions').trigger('click');
-                M.toast({ html: '成功加入記錄' });
-              }
             })
             .catch((error) => {});
         }
@@ -153,6 +146,13 @@ finalSubmit.on('click', async function (e) {
       .catch((error) => {
         // reject(error);
       });
+    if (document.getElementById('sendCopyBox').checked) {
+      console.log(document.getElementById('sendCopyBox').checked);
+      document.getElementsByClassName('form-page')[0].submit();
+    } else {
+      $('.closeBtn_Actions').trigger('click');
+      M.toast({ html: '成功加入記錄' });
+    }
   } else {
     firestore
       .collection('merchants')

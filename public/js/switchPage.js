@@ -64,5 +64,5 @@ backForm2Btn.on('click', function(e) {
   form3.style.display = 'none';
   form2Options.style.display = 'inline';
   toform3Btn.style.display = 'inline';
-  loaderWrapper.fadeOut('slow');
+  loaderWrapper.fadeOut('fast');
 });
