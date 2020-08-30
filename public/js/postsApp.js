@@ -5,6 +5,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function checkExists() {
   let docId = window.location.search.split('?')[1];
+  if (window.location.search.split('?')[1] == undefined) {
+    $('#notFoundModal').modal('open');
+    return;
+  } else {
+
+  }
   let merchantRef = firebase.firestore().collection('merchants').doc(docId);
   merchantRef.onSnapshot(
     (docRef) => {
