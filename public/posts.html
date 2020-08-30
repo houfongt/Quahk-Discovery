@@ -10,7 +10,7 @@
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <title>Quahk 發現中小企</title>
   </head>
-  <body onload="checkURL()">
+  <body onload="checkExists()">
     <div class="navbar-fixed" id="navbar">
       <nav>
         <div class="nav-wrapper">
@@ -80,7 +80,19 @@
       </div>
     </div>
 
+    <div id="notFoundModal" class="modal">
+      <div class="modal-content">
+        <h4>錯誤</h4>
+        <p>你所找的帖子不存在。</p>
+        <p>按「好」返回主頁。</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat" onclick="backToIndex()">好</a>
+      </div>
+    </div>
+
     <script type="text/javascript">
+      
       M.AutoInit();
       $('.materialboxed').materialbox();
       document.addEventListener('DOMContentLoaded', function () {
@@ -90,7 +102,6 @@
         });
       });
 
-     
     </script>
 
     <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
