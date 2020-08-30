@@ -1,4 +1,25 @@
-//document.getElementById('title').innerHTML = window.location.search.split('?')[1];
+document.addEventListener('DOMContentLoaded', function () {
+  var elems = document.getElementById('notFoundModal');
+  var instances = M.Modal.init(elems, { dismissible: false });
+});
+
+function checkExists() {
+  let docId = window.location.search.split('?')[1];
+  if (window.location.search.split('?')[1] == undefined) {
+    $('#notFoundModal').modal('open');
+    return;
+  } else {
+
+  }
+  let merchantRef = firebase.firestore().collection('merchants').doc(docId);
+  merchantRef.onSnapshot(
+    (docRef) => {
+      if (docRef.exists) {
+      } else {
+        $('#notFoundModal').modal('open');
+      }
+    });
+}
 
 var postsApp = new Vue({
   el: '#postHtml',
@@ -19,29 +40,23 @@ var postsApp = new Vue({
 
       document.title = merchantData[0].name + ' - Quahk 發現中小企';
 
-      let totalImage = Object.keys(merchantData[0]).filter(v => v.startsWith("imageSrc"));
+      let totalImage = Object.keys(merchantData[0]).filter((v) => v.startsWith('imageSrc'));
 
       let imagesLinkAfter0 = [];
 
-      for (let i = 0; i < (totalImage.length) - 1; i++) {
-
+      for (let i = 0; i < totalImage.length - 1; i++) {
         let imageLinkName = 'imageSrc' + (i + 1);
-        
+
         imagesLinkAfter0[i] = merchantData[0][imageLinkName];
 
-        console.log(imageLinkName);
-
         this.merchantImages = imagesLinkAfter0;
-
       }
-      
-     // this.merchantImages = totalImage;
 
       this.merchantData = merchantData;
     });
   },
 });
 
-function checkURL() {
-
+function backToIndex() {
+  location.replace('index.html');
 }
