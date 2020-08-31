@@ -201,6 +201,7 @@ body {
   max-width: 100%;
   max-height: 100%;
   display: block;
+  object-fit: fill;
 }
 
 .app-bar-bottom {

@@ -9,16 +9,14 @@ function checkExists() {
     $('#notFoundModal').modal('open');
     return;
   } else {
-
   }
   let merchantRef = firebase.firestore().collection('merchants').doc(docId);
-  merchantRef.onSnapshot(
-    (docRef) => {
-      if (docRef.exists) {
-      } else {
-        $('#notFoundModal').modal('open');
-      }
-    });
+  merchantRef.onSnapshot((docRef) => {
+    if (docRef.exists) {
+    } else {
+      $('#notFoundModal').modal('open');
+    }
+  });
 }
 
 var postsApp = new Vue({
@@ -60,3 +58,4 @@ var postsApp = new Vue({
 function backToIndex() {
   location.replace('index.html');
 }
+
