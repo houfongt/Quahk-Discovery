@@ -11,6 +11,8 @@
     <title>Quahk 發現中小企</title>
   </head>
   <body onload="checkExists()">
+
+    <!-- god damn navbar-->
     <div class="navbar-fixed" id="navbar">
       <nav>
         <div class="nav-wrapper">
@@ -19,6 +21,7 @@
       </nav>
     </div>
 
+    <!-- post vue -->
     <div class="container" id="postHtml">
       <div class="col s12" v-for="merchant in merchantData">
         <h4 class="left-align">{{ merchant.name }}</h4>
@@ -51,6 +54,7 @@
       </div>
     </div>
 
+    <!-- actions menu -->
     <div class="app-bar-bottom">
       <div class="fixed-action-btn" id="fixed-action-btn">
         <a class="btn-floating btn-large waves-effect waves-light red">
@@ -80,6 +84,7 @@
       </div>
     </div>
 
+    <!-- Error Box: the post is not exist-->
     <div id="notFoundModal" class="modal">
       <div class="modal-content">
         <h4>錯誤</h4>
@@ -91,6 +96,20 @@
       </div>
     </div>
 
+    <!-- Error Box: Web Share is not featured in client device-->
+    <div id="noWebShareModal" class="modal">
+      <div class="modal-content">
+        <h4>錯誤</h4>
+        <p>你的裝置無法使用系統分享。</p>
+        <p>請手動複製連結。</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">取消</a>
+        <a href="#!" class="waves-effect waves-green btn-flat" onclick="copyURL()">複製</a>
+      </div>
+    </div>
+
+    <!-- init materialize js-->
     <script type="text/javascript">
       M.AutoInit();
       $('.materialboxed').materialbox();

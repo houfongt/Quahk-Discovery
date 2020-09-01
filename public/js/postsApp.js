@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var instances = M.Modal.init(elems, { dismissible: false });
 });
 
+// prevent user from enter a not existent post with just a blank page
 function checkExists() {
   let docId = window.location.search.split('?')[1];
   if (window.location.search.split('?')[1] == undefined) {
@@ -19,6 +20,7 @@ function checkExists() {
   });
 }
 
+// get data and display post
 var postsApp = new Vue({
   el: '#postHtml',
   data: {
@@ -28,6 +30,7 @@ var postsApp = new Vue({
     message: 'hello world!',
   },
   mounted() {
+    // get docId from url and load firestore data.
     let docId = window.location.search.split('?')[1];
     const merchantRef = firebase.firestore().collection('merchants').doc(docId);
 
@@ -38,11 +41,15 @@ var postsApp = new Vue({
 
       document.title = merchantData[0].name + ' - Quahk 發現中小企';
 
+      // get all images links
       let totalImage = Object.keys(merchantData[0]).filter((v) => v.startsWith('imageSrc'));
 
       let imagesLinkAfter0 = [];
 
       for (let i = 0; i < totalImage.length - 1; i++) {
+        /* because we already displayed image0 as cover photo,
+           we only need the photos afterwards.
+           eg. image1, image2, image3, etc... */
         let imageLinkName = 'imageSrc' + (i + 1);
 
         imagesLinkAfter0[i] = merchantData[0][imageLinkName];
@@ -55,21 +62,31 @@ var postsApp = new Vue({
   },
 });
 
+// send user back to main page
 function backToIndex() {
   location.replace('index.html');
 }
 
+// user can share this post via url
 $('#shareBtn').on('click', () => {
+  // get url and title
+  let thisURL = location.href;
+  let thisTitle = document.title;
+  
   if (navigator.share) {
     navigator
       .share({
-        title: 'web.dev',
-        text: 'Check out web.dev.',
-        url: 'https://web.dev/',
-      })
-      .then(() => console.log('Successful share'))
-      .catch((error) => console.log('Error sharing', error));
+        title: thisTitle,
+        text: thisTitle,
+        url: thisURL,
+      });
   } else {
-    console.log(`Your system doesn't support sharing files.`);
+    // web share api is not accept on client
+    $('#noWebShareModal').modal('open');
   }
 });
+
+// if web share api is not accept on client, I will provide a url copy button.
+function copyURL() {
+  document.execCommand("copy", location.href);
+}
