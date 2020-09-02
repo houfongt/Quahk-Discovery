@@ -88,5 +88,7 @@ $('#shareBtn').on('click', () => {
 
 // if web share api is not accept on client, I will provide a url copy button.
 function copyURL() {
-  document.execCommand("copy", location.href);
+  let currentURL = location.href;
+  currentURL.select();
+  document.execCommand("copy");
 }
