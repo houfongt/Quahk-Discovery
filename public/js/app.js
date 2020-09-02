@@ -56,3 +56,5 @@ function firstLaunch() {
 function agreeTerms() {
   localStorage.setItem('firstLaunch', 'true');
 }
+
+

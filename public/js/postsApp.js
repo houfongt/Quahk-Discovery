@@ -1,48 +1,51 @@
-document.addEventListener('DOMContentLoaded', function () {
-  var elems = document.getElementById('notFoundModal');
+document.addEventListener("DOMContentLoaded", function () {
+  var elems = document.getElementById("notFoundModal");
   var instances = M.Modal.init(elems, { dismissible: false });
 });
 
 // prevent user from enter a not existent post with just a blank page
 function checkExists() {
-  let docId = window.location.search.split('?')[1];
-  if (window.location.search.split('?')[1] == undefined) {
-    $('#notFoundModal').modal('open');
+  let docId = window.location.search.split("?")[1];
+  if (window.location.search.split("?")[1] == undefined) {
+    $("#notFoundModal").modal("open");
     return;
   } else {
   }
-  let merchantRef = firebase.firestore().collection('merchants').doc(docId);
+  let merchantRef = firebase.firestore().collection("merchants").doc(docId);
   merchantRef.onSnapshot((docRef) => {
     if (docRef.exists) {
     } else {
-      $('#notFoundModal').modal('open');
+      $("#notFoundModal").modal("open");
     }
   });
 }
 
 // get data and display post
 var postsApp = new Vue({
-  el: '#postHtml',
+  el: "#postHtml",
   data: {
-    merchantId: window.location.search.split('?')[1],
+    merchantId: window.location.search.split("?")[1],
     merchantData: [],
     merchantImages: [],
-    message: 'hello world!',
+    posterUid: "",
+    posterName: [],
   },
   mounted() {
     // get docId from url and load firestore data.
-    let docId = window.location.search.split('?')[1];
-    const merchantRef = firebase.firestore().collection('merchants').doc(docId);
+    let docId = window.location.search.split("?")[1];
+    const merchantRef = firebase.firestore().collection("merchants").doc(docId);
 
     merchantRef.onSnapshot((doc) => {
       let merchantData = [];
 
       merchantData.push({ ...doc.data(), id: doc.id });
 
-      document.title = merchantData[0].name + ' - Quahk 發現中小企';
+      document.title = merchantData[0].name + " - Quahk 發現中小企";
 
       // get all images links
-      let totalImage = Object.keys(merchantData[0]).filter((v) => v.startsWith('imageSrc'));
+      let totalImage = Object.keys(merchantData[0]).filter((v) =>
+        v.startsWith("imageSrc")
+      );
 
       let imagesLinkAfter0 = [];
 
@@ -50,39 +53,52 @@ var postsApp = new Vue({
         /* because we already displayed image0 as cover photo,
            we only need the photos afterwards.
            eg. image1, image2, image3, etc... */
-        let imageLinkName = 'imageSrc' + (i + 1);
+        let imageLinkName = "imageSrc" + (i + 1);
 
         imagesLinkAfter0[i] = merchantData[0][imageLinkName];
 
         this.merchantImages = imagesLinkAfter0;
       }
 
+      let posterUid = merchantData[0].posterUid;
+
+      this.posterUid = posterUid;
+
       this.merchantData = merchantData;
+
+      const posterRef = firebase.firestore().collection("users").doc(posterUid);
+
+      posterRef.onSnapshot((doc) => {
+        let posterName = [];
+
+        console.log(doc.data().nickname);
+
+        posterName.push({ ...doc.data() });
+      });
     });
   },
 });
 
 // send user back to main page
 function backToIndex() {
-  location.replace('index.html');
+  location.replace("index.html");
 }
 
 // user can share this post via url
-$('#shareBtn').on('click', () => {
+$("#shareBtn").on("click", () => {
   // get url and title
   let thisURL = location.href;
   let thisTitle = document.title;
-  
+
   if (navigator.share) {
-    navigator
-      .share({
-        title: thisTitle,
-        text: thisTitle,
-        url: thisURL,
-      });
+    navigator.share({
+      title: thisTitle,
+      text: thisTitle,
+      url: thisURL,
+    });
   } else {
     // web share api is not accept on client
-    $('#noWebShareModal').modal('open');
+    $("#noWebShareModal").modal("open");
   }
 });
 
