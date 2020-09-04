@@ -28,7 +28,7 @@ var postsApp = new Vue({
     merchantData: [],
     merchantImages: [],
     posterUid: "",
-    posterName: [],
+    posterName: "",
   },
   mounted() {
     // get docId from url and load firestore data.
@@ -69,11 +69,11 @@ var postsApp = new Vue({
       const posterRef = firebase.firestore().collection("users").doc(posterUid);
 
       posterRef.onSnapshot((doc) => {
-        let posterName = [];
+        
+        let posterName = doc.data().nickname;
 
-        console.log(doc.data().nickname);
+        this.posterName = posterName;
 
-        posterName.push({ ...doc.data() });
       });
     });
   },
