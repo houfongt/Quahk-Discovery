@@ -69,12 +69,24 @@ var postsApp = new Vue({
       const posterRef = firebase.firestore().collection("users").doc(posterUid);
 
       posterRef.onSnapshot((doc) => {
-        
         let posterName = doc.data().nickname;
 
         this.posterName = posterName;
-
       });
+    });
+
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        // User is signed in.
+        if (this.posterUid == user.uid) {
+          $("#deleteBtn").show();
+        }
+        // ...
+      } else {
+        // User is signed out.
+        $("#deleteBtn").hide();
+        // ...
+      }
     });
   },
 });

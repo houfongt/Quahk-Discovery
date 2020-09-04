@@ -44,7 +44,7 @@
 
         <i class="material-icons left">person_outline</i>
 
-        <p class="left-align">由 {{ merchant.posterName }} 發布</p>
+        <p class="left-align">由 {{ posterName }} 發布</p>
 
         <img
           class="responsive-img materialboxed"
@@ -97,12 +97,13 @@
                   ><i class="material-icons">publish</i></a
                 >
               </li>
-              <li>
-                <a class="btn-floating blue"
-                  ><i class="material-icons">attach_file</i></a
+            -->
+              <li id="deleteBtn">
+                <a class="btn-floating red"
+                  ><i class="material-icons">delete</i></a
                 >
               </li>
-            -->
+            
         </ul>
       </div>
     </div>
@@ -163,6 +164,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-performance.js"></script>
 
     <script>
