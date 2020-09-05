@@ -80,11 +80,13 @@ var postsApp = new Vue({
         // User is signed in.
         if (this.posterUid == user.uid) {
           $("#deleteBtn").show();
+          $('#accountBtn').hide();
         }
         // ...
       } else {
         // User is signed out.
         $("#deleteBtn").hide();
+        $('#accountBtn').show();
         // ...
       }
     });
