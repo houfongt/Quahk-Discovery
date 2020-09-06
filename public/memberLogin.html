@@ -4,37 +4,90 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>登入 - Quahk 發現中小企</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <link rel="stylesheet" href="css/memberLoginStyle.css" />
     <link rel="stylesheet" href="css/materialize.min.css" />
-    <script src="js/materialize.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    
-      <div class="container" id="loginForm">
-        <div class="col s12">
-          <div class="card">
-            <div class="card-content">
-              <span class="card-title center-align">
-                <div id="logo-container">
-                  <img src="../logo.png" alt="" />
-                </div>
-
-                發現中小企
-                <br />
-                歡迎使用
-              </span>
-              <div class="row" id="inputs">
-                <div class="input-field col s12">
-                  <input id="email" type="email" class="validate" />
-                  <label for="email">電郵地址...</label>
-                </div>
+    <div class="container" id="loginForm">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title center-align">
+              <div id="logo-container">
+                <img src="../logo.png" alt="" />
               </div>
-              
+
+              發現中小企
+              <br />
+              歡迎使用
+            </span>
+            <div class="row" id="inputs">
+              <div class="input-field col s12">
+                <input id="email" type="email" class="validate" />
+                <label for="email">電郵地址...</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="password" type="password" />
+                <label for="password">密碼</label>
+              </div>
+              <button class="btn waves-effect waves-light" id="loginBtn">
+                登入
+                <i class="material-icons right">send</i>
+              </button>
             </div>
           </div>
         </div>
       </div>
-    
+    </div>
+
+    <div id="emailFormatErrorModal" class="modal">
+      <div class="modal-content">
+        <h4>等等...</h4>
+        <p>你的電子郵件格式錯誤，請你檢查一次後再次提交。</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat"
+          >好</a
+        >
+      </div>
+    </div>
+
+    <script>
+      M.AutoInit();
+
+    </script>
+    <script src="js/loginJs.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+             https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-performance.js"></script>
+
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyAG7-yLEWcsPtEgY18yY4v4yGaUui15lvk",
+        authDomain: "quahk-competition-3rdmwdsc.firebaseapp.com",
+        databaseURL: "https://quahk-competition-3rdmwdsc.firebaseio.com",
+        projectId: "quahk-competition-3rdmwdsc",
+        storageBucket: "quahk-competition-3rdmwdsc.appspot.com",
+        messagingSenderId: "768144406056",
+        appId: "1:768144406056:web:40c269b46cd21b67e6e71d",
+        measurementId: "G-6YHSEGHMJV",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+      var perf = firebase.performance();
+    </script>
   </body>
 </html>
