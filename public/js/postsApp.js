@@ -73,29 +73,67 @@ var postsApp = new Vue({
 
         this.posterName = posterName;
       });
-    });
 
-    firebase.auth().onAuthStateChanged(function (user) {
+      let user = firebase.auth().currentUser;
+
       if (user) {
-        // User is signed in.
         if (this.posterUid == user.uid) {
           $("#deleteBtn").show();
-          $('#accountBtn').hide();
+          $("#accountBtn").hide();
         }
-        // ...
       } else {
-        // User is signed out.
         $("#deleteBtn").hide();
-        $('#accountBtn').show();
-        // ...
+        $("#accountBtn").show();
       }
     });
   },
+  methods: {
+    deletePopUp: function () {
+      let user = firebase.auth().currentUser;
+
+      if (user) {
+        if (this.posterUid == user.uid) {
+          $('#deletePrompt').modal('open');
+        }
+      } else {
+
+      }
+    },
+    deletePost: function () {
+      let user = firebase.auth().currentUser;
+
+      if (user) {
+        if (this.posterUid == user.uid) {
+          let docId = window.location.search.split('?')[1];
+          console.log(docId)
+
+          firebase.firestore().collection('merchants').doc(docId).delete().then(() => {
+            backToIndex('deleted');
+          }).catch((error) => {
+            console.error("Error removing document: ", error);
+          })
+        }
+      } else {
+      }
+    },
+  }
 });
 
+$('#deleteBtn').on('click', () => {
+  postsApp.deletePopUp();
+});
+
+function deleteNext() {
+  $('#finalDeletePrompt').modal('open');
+}
+
+$('#finalDeleteBtn').on('click', () => {
+  postsApp.deletePost();
+})
+
 // send user back to main page
-function backToIndex() {
-  location.replace("index.html");
+function backToIndex(message) {
+  location.replace("index.html" + '?' + message);
 }
 
 // user can share this post via url
@@ -122,3 +160,4 @@ function copyURL() {
   currentURL.select();
   document.execCommand("copy");
 }
+

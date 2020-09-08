@@ -132,7 +132,7 @@ finalSubmit.on('click', async function (e) {
         comments: merchantComments,
         rating: rating,
         editAble: isEditAble,
-        poster: poster,
+        posterUid: poster,
       })
       .then((docRef) => {
         console.log('Document written successfully:' + docRef.id);
@@ -171,7 +171,7 @@ finalSubmit.on('click', async function (e) {
         rating: rating,
         imageSrc0: 'assets/noPhoto.png',
         editAble: isEditAble,
-        poster: poster,
+        posterUid: poster,
       })
       .then(() => {
         console.log('Document written successfully.');

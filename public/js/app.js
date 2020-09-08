@@ -48,13 +48,11 @@ function firstLaunch() {
 
   if ((location.search).split('?')[1] == 'done') {
     M.toast({ html: '成功加入記錄' });
-  } else {
-
+  } else if ((location.search).split('?')[1] == 'deleted') {
+    M.toast({ html: "成功刪除記錄" });
   }
 }
 
 function agreeTerms() {
   localStorage.setItem('firstLaunch', 'true');
 }
-
-

@@ -46,10 +46,7 @@
 
         <p class="left-align">由 {{ posterName }} 發布</p>
 
-        <img
-          class="responsive-img materialboxed"
-          v-bind:src="merchant.imageSrc0"
-        />
+        <img class="responsive-img" v-bind:src="merchant.imageSrc0" />
 
         <hr />
 
@@ -59,10 +56,7 @@
         <p class="left-align">{{ merchant.comments }}</p>
 
         <div v-for="merchantImage in merchantImages">
-          <img
-            class="responsive-img materialboxed"
-            v-bind:src="merchantImage"
-          />
+          <img class="responsive-img" v-bind:src="merchantImage" />
           <br />
         </div>
       </div>
@@ -86,20 +80,20 @@
             >
           </li>
 
-          <li>
+          <li id="accountBtn">
             <a class="btn-floating green"
               ><i class="material-icons">account_circle</i></a
             >
+          </li>
+
+          <li id="deleteBtn">
+            <a class="btn-floating red" @click="deletePost"><i class="material-icons">delete</i></a>
           </li>
 
           <li>
             <a class="btn-floating yellow darken-1" id="shareBtn"
               ><i class="material-icons">share</i></a
             >
-          </li>
-
-          <li id="deleteBtn">
-            <a class="btn-floating red"><i class="material-icons">delete</i></a>
           </li>
         </ul>
       </div>
@@ -108,7 +102,7 @@
     <!-- Error Box: the post is not exist-->
     <div id="notFoundModal" class="modal">
       <div class="modal-content">
-        <h4>錯誤</h4>
+        <h4>抱歉...</h4>
         <p>你所找的帖子不存在。</p>
         <p>按「好」返回主頁。</p>
       </div>
@@ -122,10 +116,51 @@
       </div>
     </div>
 
+    <div id="deletePrompt" class="modal">
+      <div class="modal-content">
+        <h4>等等...</h4>
+        <p>你即將要刪除一個你自己分享的發現，你確定嗎？</p>
+        <p style="color: red;">這個將是一個不能復原的操作！</p>
+        <p>若只是想更改部分內容，請使用編輯功能。</p>
+      </div>
+      <div class="modal-footer">
+        <a
+          href="#!"
+          class="modal-close waves-effect waves-green btn-flat"
+          >取消</a>
+        <a
+          href="#!"
+          class="modal-close waves-effect waves-green btn-flat"
+          onclick="deleteNext()"
+          >繼續</a
+        >
+      </div>
+    </div>
+
+    <div id="finalDeletePrompt" class="modal">
+      <div class="modal-content">
+        <h4 style="color: red;">你確定嗎？</h4>
+        <span>請慎重考慮，</span><span style="color: red;">這個將是一個不能復原的操作！</span>
+        <p style="color: blue;">若只是想更改部分內容，請使用編輯功能。</p>
+      </div>
+      <div class="modal-footer">
+        <a
+          href="#!"
+          class="modal-close waves-effect waves-green btn-flat"
+          >取消</a>
+        <a
+          href="#!"
+          class="modal-close waves-effect waves-green btn-flat"
+          id="finalDeleteBtn"
+          >刪除</a
+        >
+      </div>
+    </div>
+
     <!-- Error Box: Web Share is not featured in client device-->
     <div id="noWebShareModal" class="modal">
       <div class="modal-content">
-        <h4>錯誤</h4>
+        <h4>抱歉...</h4>
         <p>你的裝置無法使用系統分享。</p>
         <p>請手動複製連結。</p>
       </div>
@@ -181,6 +216,7 @@
       var perf = firebase.performance();
     </script>
 
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="js/postsApp.js"></script>
   </body>
