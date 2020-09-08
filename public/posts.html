@@ -81,13 +81,13 @@
           </li>
 
           <li id="accountBtn">
-            <a class="btn-floating green"
+            <a class="btn-floating green" href="memberLogin.html"
               ><i class="material-icons">account_circle</i></a
             >
           </li>
 
           <li id="deleteBtn">
-            <a class="btn-floating red" @click="deletePost"><i class="material-icons">delete</i></a>
+            <a class="btn-floating red"><i class="material-icons">delete</i></a>
           </li>
 
           <li>
@@ -111,6 +111,20 @@
           href="#!"
           class="modal-close waves-effect waves-green btn-flat"
           onclick="backToIndex()"
+          >好</a
+        >
+      </div>
+    </div>
+
+    <div id="permissionError" class="modal">
+      <div class="modal-content">
+        <h4>抱歉...</h4>
+        <p>請使用當時建立此發現的帳戶來登入，然後再試一次。</p>
+      </div>
+      <div class="modal-footer">
+        <a
+          href="#!"
+          class="modal-close waves-effect waves-green btn-flat"
           >好</a
         >
       </div>
