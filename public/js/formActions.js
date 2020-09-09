@@ -66,7 +66,6 @@ star5.on('click', (e) => {
   emailRating.val('5分');
 });
 
-
 sendCopyBox.on('click', () => {
   if (document.getElementById('sendCopyBox').checked) {
     //console.log(document.getElementById('sendCopyBox').checked);
@@ -108,8 +107,26 @@ finalSubmit.on('click', async function (e) {
     window.poster = 'anonymous';
   } else {
     let emailVal = emailField.val();
-    let password = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-     await addAccountToDirectory(emailVal, password);
+    let password = Math.random().toString(36).substring(2, 15);
+    await firebase
+      .auth()
+      .createUserWithEmailAndPassword(emailVal, password)
+      .then((user) => {
+        window.poster = emailVal;
+        let uid = user.user.uid;
+        $('#password').val(password);
+        addAccountToDirectory(emailVal, uid);
+      })
+      .catch(function (error) {
+        // Handle Errors.
+        var errorCode = error.code;
+
+        if (errorCode == 'auth/email-already-in-use') {
+          window.poster = emailVal;
+        }
+        
+      });
+    
   }
 
   $('#finalSubmit').hide();
@@ -187,7 +204,6 @@ finalSubmit.on('click', async function (e) {
         comments: merchantComments,
         rating: rating,
         imageSrc0: 'assets/noPhoto.png',
-        editAble: isEditAble,
         posterUid: poster,
       })
       .then(() => {
@@ -233,24 +249,16 @@ async function uploadImageAsPromise(imageFile) {
   });
 }
 
-function addAccountToDirectory(email, password) {
-  
- firebase
-        .auth()
-        .createUserWithEmailAndPassword(email, password).then((user) => {
-          window.poster = user.email;
-          let uid = user.uid;
-          let email = user.email;
-          $('#password').val(password);
-        })
-        .catch(function (error) {
-          // Handle Errors here.
-          var errorCode = error.code;
-          if (errorCode == 'auth/email-already-in-use') {
-            window.poster = emailVal;
-           
-          }
-          var errorMessage = error.message;
-          // ...
-        });
+function addAccountToDirectory(email, uid) {
+  let userRef = firebase.firestore().collection('users').doc(email);
+  let nickname = email.split('@')[0];
+
+  userRef.set({
+    nickname: nickname,
+    uid: uid
+  }).then((doc) => {
+    console.log('success');
+  }).catch((error) => {
+
+  })
 }
