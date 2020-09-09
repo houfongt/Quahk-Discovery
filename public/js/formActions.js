@@ -109,18 +109,7 @@ finalSubmit.on('click', async function (e) {
   } else {
     let emailVal = emailField.val();
     let password = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(emailVal, password)
-        .catch(function (error) {
-          // Handle Errors here.
-          var errorCode = error.code;
-          if (errorCode == 'auth/email-already-in-use') {
-
-          }
-          var errorMessage = error.message;
-          // ...
-        });
+     await addAccountToDirectory(emailVal, password);
   }
 
   $('#finalSubmit').hide();
@@ -242,4 +231,26 @@ async function uploadImageAsPromise(imageFile) {
       }
     );
   });
+}
+
+function addAccountToDirectory(email, password) {
+  
+ firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password).then((user) => {
+          window.poster = user.email;
+          let uid = user.uid;
+          let email = user.email;
+          $('#password').val(password);
+        })
+        .catch(function (error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          if (errorCode == 'auth/email-already-in-use') {
+            window.poster = emailVal;
+           
+          }
+          var errorMessage = error.message;
+          // ...
+        });
 }

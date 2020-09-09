@@ -64,6 +64,8 @@ var postsApp = new Vue({
 
       this.merchantData = merchantData;
 
+      let user = firebase.auth().currentUser;
+
       const posterRef = firebase.firestore().collection('users').doc(posterUid);
 
       posterRef.onSnapshot((doc) => {
@@ -72,10 +74,8 @@ var postsApp = new Vue({
         this.posterName = posterName;
       });
 
-      let user = firebase.auth().currentUser;
-
       if (user) {
-        if (this.posterUid == user.uid) {
+        if (this.posterUid == user.email) {
           $('#deleteBtn').show();
           $('#accountBtn').hide();
         } else {
@@ -93,7 +93,7 @@ var postsApp = new Vue({
       let user = firebase.auth().currentUser;
 
       if (user) {
-        if (this.posterUid == user.uid) {
+        if (this.posterUid == user.email) {
           $('#deletePrompt').modal('open');
         } else {
           $('#permissionError').modal('open');
@@ -106,9 +106,8 @@ var postsApp = new Vue({
       let user = firebase.auth().currentUser;
 
       if (user) {
-        if (this.posterUid == user.uid) {
+        if (this.posterUid == user.email) {
           let docId = window.location.search.split('?')[1];
-          console.log(docId);
 
           firebase
             .firestore()
