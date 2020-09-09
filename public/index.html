@@ -159,17 +159,18 @@
         <br />
         <p>
           <label>
-            <input type="checkbox" class="filled-in" checked="checked" id="laterEdit" disabled />
+            <input type="checkbox" class="filled-in" id="laterEdit"  />
             <span>把這次記錄設成匿名</span>
           </label>
         </p>
-        <p class="red-text">你未來將無法變更此記錄</p>
+        <p class="red-text" id="editAlert">你未來將無法變更此記錄</p>
         <p>
           <label>
             <input type="checkbox" class="filled-in" id="sendCopyBox" checked="checked" />
             <span>發送一份副本給我</span>
           </label>
         </p>
+        <p class="red-text" id="createAccountAlert">若你在這裏未有帳戶，我們將為你建立一個。</p>
 
         <div id="emailBox">
           <div class="input-field">

@@ -52,6 +52,9 @@ $('#form2Next').on('click', function (e) {
   form3.style.display = 'inline-block';
   form3Options.style.display = 'inline';
   submitBtn.style.display = 'inline';
+  document.getElementById('sendCopyBox').disabled = 'true';
+  document.getElementById('sendCopyBox').checked = 'true';
+  emailBox.show();
   loaderWrapper.fadeOut('slow');
 });
 

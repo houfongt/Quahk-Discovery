@@ -66,13 +66,28 @@ star5.on('click', (e) => {
   emailRating.val('5分');
 });
 
+
 sendCopyBox.on('click', () => {
   if (document.getElementById('sendCopyBox').checked) {
-    console.log(document.getElementById('sendCopyBox').checked);
+    //console.log(document.getElementById('sendCopyBox').checked);
     emailBox.show();
   } else {
-    console.log(document.getElementById('sendCopyBox').checked);
+    //console.log(document.getElementById('sendCopyBox').checked);
     emailBox.hide();
+  }
+});
+
+$('#laterEdit').on('click', () => {
+  if (document.getElementById('laterEdit').checked) {
+    $('#editAlert').show();
+    $('#createAccountAlert').hide();
+    document.getElementById('sendCopyBox').removeAttribute('disabled');
+  } else {
+    $('#editAlert').hide();
+    $('#createAccountAlert').show();
+    document.getElementById('sendCopyBox').disabled = 'true';
+    document.getElementById('sendCopyBox').checked = 'true';
+    emailBox.show();
   }
 });
 
@@ -92,7 +107,20 @@ finalSubmit.on('click', async function (e) {
   if (document.getElementById('laterEdit').checked) {
     window.poster = 'anonymous';
   } else {
+    let emailVal = emailField.val();
+    let password = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(emailVal, password)
+        .catch(function (error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          if (errorCode == 'auth/email-already-in-use') {
 
+          }
+          var errorMessage = error.message;
+          // ...
+        });
   }
 
   $('#finalSubmit').hide();

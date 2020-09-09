@@ -172,6 +172,10 @@ body {
   display: none;
 }
 
+#editAlert {
+  display: none;
+}
+
 .form1 div.input-field {
   width: 90%;
 }
