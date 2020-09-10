@@ -1,13 +1,26 @@
 function startMap() {
-  $("#mapModel").modal("open");
+  $('#mapModel').modal('open');
   initMap();
 }
 
 var map, infoWindow;
 
 function initMap() {
-  map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: 22.210928, lng: 113.552971 },
+  if ($('#input_location').val() != '') {
+    let dbLat = $('#input_location').val();
+
+    window.thisLat = parseFloat(dbLat.split(',')[0]);
+    console.log(thisLat)
+    window.thisLng = parseFloat(dbLat.split(',')[1]);
+    console.log(thisLng)
+
+  } else {
+    window.thisLat = 22.210928;
+    window.thisLng = 113.552971;
+  }
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: { lat: thisLat, lng: thisLng },
     zoom: 18,
   });
 
@@ -32,23 +45,22 @@ function initMap() {
 
         markerLocation(marker);
 
-        google.maps.event.addListener(map, "click", function (event) {
+        google.maps.event.addListener(map, 'click', function (event) {
           var clickedLocation = event.latLng;
           marker.setPosition(clickedLocation);
           markerLocation(marker);
         });
 
-        google.maps.event.addListener(marker, "dragend", function (event) {
+        google.maps.event.addListener(marker, 'dragend', function (event) {
           markerLocation(marker);
         });
       },
       function (error) {
         if (error.code == error.PERMISSION_DENIED) {
-          document.getElementById("mapErrorReason").innerText =
-            "錯誤原因：用戶拒絕";
-          $("#mapError").modal("open");
+          document.getElementById('mapErrorReason').innerText = '錯誤原因：用戶拒絕';
+          $('#mapError').modal('open');
           var marker = false;
-          google.maps.event.addListener(map, "click", function (event) {
+          google.maps.event.addListener(map, 'click', function (event) {
             //Get the location that the user clicked.
             var clickedLocation = event.latLng;
             //If the marker hasn't been added.
@@ -60,9 +72,7 @@ function initMap() {
                 draggable: true, //make it draggable
               });
               //Listen for drag events!
-              google.maps.event.addListener(marker, "dragend", function (
-                event
-              ) {
+              google.maps.event.addListener(marker, 'dragend', function (event) {
                 markerLocation(marker);
               });
             } else {
@@ -73,11 +83,10 @@ function initMap() {
             markerLocation(marker);
           });
         } else if (error.code == error.POSITION_UNAVAILABLE) {
-          document.getElementById("mapErrorReason").innerText =
-            "錯誤原因：用戶已批准，但裝置內部零件發生問題。";
-          $("#mapError").modal("open");
+          document.getElementById('mapErrorReason').innerText = '錯誤原因：用戶已批准，但裝置內部零件發生問題。';
+          $('#mapError').modal('open');
           var marker = false;
-          google.maps.event.addListener(map, "click", function (event) {
+          google.maps.event.addListener(map, 'click', function (event) {
             //Get the location that the user clicked.
             var clickedLocation = event.latLng;
             //If the marker hasn't been added.
@@ -89,9 +98,7 @@ function initMap() {
                 draggable: true, //make it draggable
               });
               //Listen for drag events!
-              google.maps.event.addListener(marker, "dragend", function (
-                event
-              ) {
+              google.maps.event.addListener(marker, 'dragend', function (event) {
                 markerLocation(marker);
               });
             } else {
@@ -102,11 +109,10 @@ function initMap() {
             markerLocation(marker);
           });
         } else if (error.code == error.TIMEOUT) {
-          document.getElementById("mapErrorReason").innerText =
-            "錯誤原因：用戶已批准，獲取逾時";
-          $("#mapError").modal("open");
+          document.getElementById('mapErrorReason').innerText = '錯誤原因：用戶已批准，獲取逾時';
+          $('#mapError').modal('open');
           var marker = false;
-          google.maps.event.addListener(map, "click", function (event) {
+          google.maps.event.addListener(map, 'click', function (event) {
             //Get the location that the user clicked.
             var clickedLocation = event.latLng;
             //If the marker hasn't been added.
@@ -118,9 +124,7 @@ function initMap() {
                 draggable: true, //make it draggable
               });
               //Listen for drag events!
-              google.maps.event.addListener(marker, "dragend", function (
-                event
-              ) {
+              google.maps.event.addListener(marker, 'dragend', function (event) {
                 markerLocation(marker);
               });
             } else {
@@ -135,9 +139,9 @@ function initMap() {
     );
   } else {
     // Browser doesn't support Geolocation
-    $("#mapError").modal("open");
+    $('#mapError').modal('open');
     var marker = false;
-    google.maps.event.addListener(map, "click", function (event) {
+    google.maps.event.addListener(map, 'click', function (event) {
       //Get the location that the user clicked.
       var clickedLocation = event.latLng;
       //If the marker hasn't been added.
@@ -149,7 +153,7 @@ function initMap() {
           draggable: true, //make it draggable
         });
         //Listen for drag events!
-        google.maps.event.addListener(marker, "dragend", function (event) {
+        google.maps.event.addListener(marker, 'dragend', function (event) {
           markerLocation(marker);
         });
       } else {
@@ -199,9 +203,9 @@ function markerLocation(marker) {
   //Add lat and lng values to a field that we can save.
   let lat = currentLocation.lat();
   let lng = currentLocation.lng();
-  let finalPosition = lat + "," + lng;
+  let finalPosition = lat + ',' + lng;
   //console.log(finalPosition);
-  document.getElementById("input_location").value = finalPosition;
+  document.getElementById('input_location').value = finalPosition;
 
   var geocoder = new google.maps.Geocoder();
 
@@ -209,18 +213,17 @@ function markerLocation(marker) {
 }
 
 function geocodeLatLng(geocoder, finalPosition) {
-  var latlngStr = finalPosition.split(",", 2);
+  var latlngStr = finalPosition.split(',', 2);
   var latlng = { lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1]) };
   geocoder.geocode({ location: latlng }, function (results, status) {
-    if (status === "OK") {
+    if (status === 'OK') {
       if (results[0]) {
-        document.getElementById("decoded_location").value =
-          results[0].formatted_address;
+        document.getElementById('decoded_location').value = results[0].formatted_address;
       } else {
-        window.alert("No results found");
+        window.alert('No results found');
       }
     } else {
-      window.alert("Geocoder failed due to: " + status);
+      window.alert('Geocoder failed due to: ' + status);
     }
   });
 }

@@ -69,3 +69,7 @@ backForm2Btn.on('click', function(e) {
   toform3Btn.style.display = 'inline';
   loaderWrapper.fadeOut('fast');
 });
+
+$('.editCloseBtn').on('click', (e) => {
+  $('#cancelModel').modal('open');
+});

@@ -1,0 +1,21 @@
+.edit-form-block {
+  position: absolute;
+  display: inline-block;
+  bottom: 0;
+  height: auto;
+  width: 100%;
+  background-color: #eeeeee;
+}
+
+#formCancelBtn {
+  display: inline;
+  position: absolute;
+  bottom: 1.5em;
+  float: left;
+}
+
+#form1Next {
+  display: inline;
+  position: absolute;
+  bottom: 1.5em;
+}

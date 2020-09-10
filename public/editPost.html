@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>編輯 - Quahk發現中小企</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="css/editPageStyle.css" />
+    <link rel="stylesheet" href="css/materialize.min.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+  </head>
+  <body onload="checkExists()">
+    <div id="postHtml">
+      <form method="POST" v-for="merchant in merchantData" enctype="multipart/form-data" action="https://formsubmit.co/14fb7776c3a6d1713b8ef36abe0a903e">
+        <input type="hidden" name="_next" value="https://discovery.quahk.com/index.html?updateSuccess" />
+        <input type="hidden" name="rating" value="" id="emailRating" />
+        <input type="hidden" name="_autoresponse" value="感謝您將記錄更新到Quahk發現中小企！" />
+        <input type="hidden" name="_template" value="box" />
+        <div class="form1">
+          <h4>編輯 - 發現中小企</h4>
+          <h5>步驟3之1．商家資料(一)</h5>
+          <br />
+
+          <div class="input-field">
+            <i class="material-icons prefix">business</i>
+            <input id="storeName" type="text" class="validate" v-bind:value="merchant.name" name="商家名稱" required />
+            <label class="active" for="storeName">商家名稱</label>
+            <span class="helper-text" data-error="必填">必填</span>
+          </div>
+          <br />
+          <div class="input-field" id="location_box">
+            <i class="material-icons prefix">location_on</i>
+            <input placeholder="可自動獲取位置" id="input_location" type="text" name="商家位置(坐標)" class="validate" v-bind:value="[merchant.geopoint.latitude,  merchant.geopoint.longitude]" required />
+            <label class="active" for="input_location">商家位置</label>
+            <span class="helper-text" data-error="必填">必填</span>
+          </div>
+          <div class="input-field">
+            <i class="material-icons prefix"></i>
+            <input id="decoded_location" type="text" class="validate" v-bind:value="merchant.streetName" name="商家位置" readonly="yes" />
+            <!--<label for="decoded_location">商家位置</label> -->
+          </div>
+          <div class="input-field">
+            <center>
+              <a class="waves-effect waves-light green accent-4 btn" id="autoLocationBtn" onclick="startMap()">自動獲取位置</a>
+            </center>
+          </div>
+          <br />
+        </div>
+        <div class="form2">
+          <h4>發現中小企</h4>
+          <h5>步驟3之2．商家資料(二)</h5>
+          <br />
+          <div class="input-field">
+            <i class="material-icons prefix">edit</i>
+            <textarea placeholder="這商家的服務，態度如何？" id="textarea1" name="意見" class="materialize-textarea"></textarea>
+            <label for="textarea1">意見</label>
+          </div>
+
+          <div id="ratingBox">
+            <div id="ratingStar">
+              <i class="material-icons" style="font-size: 28px">stars</i>
+            </div>
+            <div id="ratingStars">
+              <small>評分</small>
+              <br />
+              <div>
+                <a href="#" id="star1"><i class="material-icons">star_border</i></a>
+                <a href="#" id="star2"><i class="material-icons">star_border</i></a>
+                <a href="#" id="star3"><i class="material-icons">star_border</i></a>
+                <a href="#" id="star4"><i class="material-icons">star_border</i></a>
+                <a href="#" id="star5"><i class="material-icons">star_border</i></a>
+              </div>
+            </div>
+          </div>
+          <br />
+        </div>
+        <div class="form3">
+          <h4>發現中小企</h4>
+          <h5>步驟3之3．你的資料</h5>
+          <br />
+          <p>
+            <label>
+              <input type="checkbox" class="filled-in" id="laterEdit" />
+              <span>把這次記錄設成匿名</span>
+            </label>
+          </p>
+          <p class="red-text" id="editAlert">你未來將無法變更此記錄</p>
+          <p>
+            <label>
+              <input type="checkbox" class="filled-in" id="sendCopyBox" checked="checked" />
+              <span>發送一份副本給我</span>
+            </label>
+          </p>
+          <p class="red-text" id="createAccountAlert">若你在這裏未有帳戶，我們將為你建立一個。</p>
+
+          <div id="emailBox">
+            <div class="input-field">
+              <i class="material-icons prefix">email</i>
+              <input id="email" type="email" name="發送一份副本給以下電子郵件地址" value="" class="validate" />
+              <label for="email">Email</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-block"></div>
+
+        <a class="btn-large waves-effect btn-flat editCloseBtn closeBtn leftBtn" id="formCancelBtn">取消</a>
+        <a class="next_btn btn-floating btn-large waves-effect waves-light teal lighten-1" id="form1Next"><i class="material-icons">arrow_forward</i></a>
+        <a class="dropdown-trigger btn-floating btn-large waves-effect waves-light yellow lighten-1 leftBtn" id="form2OptionsId" data-target="form2OptionsDropdown"><i class="material-icons black-text">arrow_back</i></a>
+
+        <!-- Dropdown Structure -->
+        <ul id="form2OptionsDropdown" class="dropdown-content">
+          <li><a href="#cancelModal" class="editCloseBtn">取消</a></li>
+          <li><a href="#!" id="backForm1Btn">上一步</a></li>
+        </ul>
+
+        <a class="dropdown-trigger btn-floating btn-large waves-effect waves-light yellow lighten-1 leftBtn" id="form3OptionsId" data-target="form3OptionsDropdown"><i class="material-icons black-text">arrow_back</i></a>
+
+        <!-- Dropdown Structure -->
+        <ul id="form3OptionsDropdown" class="dropdown-content">
+          <li><a href="#cancelModal" class="editCloseBtn">取消</a></li>
+          <li><a href="#!" id="backForm2Btn">上一步</a></li>
+        </ul>
+
+        <a class="next_btn btn-floating btn-large waves-effect waves-light teal lighten-1" id="form2Next"><i class="material-icons">arrow_forward</i></a>
+
+        <a class="next_btn btn-floating btn-large waves-effect waves-light teal lighten-1" id="finalSubmit"><i class="material-icons">done</i></a>
+      </form>
+    </div>
+
+    <div id="mapModel" class="modal modal-fixed-footer">
+      <div class="modal-content">
+        <h4>獲取位置</h4>
+        <div id="map"></div>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+      </div>
+    </div>
+
+    <div id="cancelModel" class="modal">
+      <div class="modal-content">
+        <h4>你確定嗎？</h4>
+        <p style="color: red">你輸入的所有資料將被刪除！</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">返回</a>
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat closeBtn_Actions">確定</a>
+      </div>
+    </div>
+
+    <div id="missingInfoModel" class="modal">
+      <div class="modal-content">
+        <h4>等等...</h4>
+        <p>請填寫所有必要的信息。</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">好</a>
+      </div>
+    </div>
+
+    <div id="mapError" class="modal">
+      <div class="modal-content">
+        <h4>抱歉！</h4>
+        <p>您的裝置似乎不能夠自動獲取地理位置，但您可以嘗試自己選擇位置。</p>
+        <p id="mapErrorReason">錯誤原因：裝置不支援HTML5 GEOLOCATION</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">好</a>
+      </div>
+    </div>
+
+    <div id="notFoundModal" class="modal">
+      <div class="modal-content">
+        <h4>抱歉...</h4>
+        <p>你所找的帖子不存在。</p>
+        <p>按「好」返回主頁。</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat" onclick="backToIndex()">好</a>
+      </div>
+    </div>
+
+    <div class="loader-wrapper">
+      <div class="preloader-wrapper small active">
+        <div class="spinner-layer spinner-blue">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+
+        <div class="spinner-layer spinner-red">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+
+        <div class="spinner-layer spinner-yellow">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+
+        <div class="spinner-layer spinner-green">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      M.AutoInit();
+    </script>
+
+    <script>
+      $(window).on('load', function () {
+        $('.loader-wrapper').fadeOut('slow');
+      });
+    </script>
+
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkL_kdAxf16jL8gYWZubOhVkfsApIwO28" type="text/javascript"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+                 https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-performance.js"></script>
+
+    <script>
+      var firebaseConfig = {
+        apiKey: 'AIzaSyAG7-yLEWcsPtEgY18yY4v4yGaUui15lvk',
+        authDomain: 'quahk-competition-3rdmwdsc.firebaseapp.com',
+        databaseURL: 'https://quahk-competition-3rdmwdsc.firebaseio.com',
+        projectId: 'quahk-competition-3rdmwdsc',
+        storageBucket: 'quahk-competition-3rdmwdsc.appspot.com',
+        messagingSenderId: '768144406056',
+        appId: '1:768144406056:web:40c269b46cd21b67e6e71d',
+        measurementId: 'G-6YHSEGHMJV',
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+      var perf = firebase.performance();
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/postsApp.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/switchPage.js"></script>
+
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+  </body>
+</html>

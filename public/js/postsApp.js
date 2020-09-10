@@ -77,13 +77,16 @@ var postsApp = new Vue({
       if (user) {
         if (this.posterUid == user.email) {
           $('#deleteBtn').show();
+          $('#editBtn').show();
           $('#accountBtn').hide();
         } else {
           $('#deleteBtn').hide();
+          $('#editBtn').hide();
           $('#accountBtn').show();
         }
       } else {
         $('#deleteBtn').hide();
+        $('#editBtn').hide();
         $('#accountBtn').show();
       }
     });
@@ -132,6 +135,11 @@ var postsApp = new Vue({
 
 $('#deleteBtn').on('click', () => {
   postsApp.deletePopUp();
+});
+
+$('#editBtn').on('click', () => {
+  let docId = window.location.search.split('?')[1];
+  location.replace('editPost.html' + "?" + docId);
 });
 
 function deleteNext() {
