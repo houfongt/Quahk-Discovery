@@ -6,7 +6,7 @@ function emailIsValid(email) {
 
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
-    location.replace("index.html");
+    location.replace("index.html" + '?loginSuccess');
   } else {
     // No user is signed in.
   }

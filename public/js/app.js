@@ -50,6 +50,8 @@ function firstLaunch() {
     M.toast({ html: '成功加入記錄' });
   } else if ((location.search).split('?')[1] == 'deleted') {
     M.toast({ html: "成功刪除記錄" });
+  } else if ((location.search).split('?')[1] == 'loginSuccess') {
+    M.toast({ html: "你已登入" });
   }
 }
 
