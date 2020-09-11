@@ -25,6 +25,7 @@ backForm1Btn.on('click', function (e) {
 });
 
 // go to form 2
+
 $('#form1Next').on('click', function (e) {
   if (
     document.getElementById("storeName").value == ""  ||

@@ -22,7 +22,6 @@
           <h4>編輯 - 發現中小企</h4>
           <h5>步驟3之1．商家資料(一)</h5>
           <br />
-
           <div class="input-field">
             <i class="material-icons prefix">business</i>
             <input id="storeName" type="text" class="validate" v-bind:value="merchant.name" name="商家名稱" required />
@@ -82,13 +81,6 @@
           <br />
           <p>
             <label>
-              <input type="checkbox" class="filled-in" id="laterEdit" />
-              <span>把這次記錄設成匿名</span>
-            </label>
-          </p>
-          <p class="red-text" id="editAlert">你未來將無法變更此記錄</p>
-          <p>
-            <label>
               <input type="checkbox" class="filled-in" id="sendCopyBox" checked="checked" />
               <span>發送一份副本給我</span>
             </label>
@@ -106,7 +98,7 @@
         <div class="form-block"></div>
 
         <a class="btn-large waves-effect btn-flat editCloseBtn closeBtn leftBtn" id="formCancelBtn">取消</a>
-        <a class="next_btn btn-floating btn-large waves-effect waves-light teal lighten-1" id="form1Next"><i class="material-icons">arrow_forward</i></a>
+        <a class="next_btn btn-floating btn-large waves-effect waves-light teal lighten-1" id="form1Next" v-on:click="toForm2"><i class="material-icons">arrow_forward</i></a>
         <a class="dropdown-trigger btn-floating btn-large waves-effect waves-light yellow lighten-1 leftBtn" id="form2OptionsId" data-target="form2OptionsDropdown"><i class="material-icons black-text">arrow_back</i></a>
 
         <!-- Dropdown Structure -->
@@ -236,6 +228,8 @@
     <script type="text/javascript">
       M.AutoInit();
     </script>
+
+    
 
     <script>
       $(window).on('load', function () {

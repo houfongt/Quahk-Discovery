@@ -130,6 +130,20 @@ var postsApp = new Vue({
         $('#permissionError').modal('open');
       }
     },
+    toForm2: function () {
+      if (document.getElementById('storeName').value == '' || document.getElementById('input_location').value == '') {
+        $('#missingInfoModel').modal('open');
+      } else {
+        document.getElementById('formCancelBtn').style.display = 'none';
+        document.getElementById('form1Next').style.display = 'none';
+        $('.loaderWrapper').fadeIn('fast');
+        document.getElementsByClassName('.form1')[0].style.display = 'none';
+        form2.style.display = 'inline-block';
+        form2Options.style.display = 'inline';
+        toform3Btn.style.display = 'inline';
+        loaderWrapper.fadeOut('slow');
+      }
+    },
   },
 });
 
