@@ -32,8 +32,13 @@
 
 愛喝咖啡和奶茶。
 
+聯絡我：[edward@quahk.com][4], [Facebook][5], [Instagram][6]
+
 來自我的其他作品：[澳門培正中學第49屆校運會網頁][1], [功課列表電子化計劃(其實即係電子功課表一個)][2], [Quahk Inc.][3]
 
 [1]: http://m49.puiching.edu.mo/
 [2]: http://home.puiching.edu.mo/~0700898-8/qantas/
 [3]: https://quahk.com/
+[4]: mailto:edward@quahk.com
+[5]: https://www.facebook.com/tang.edward.794
+[6]: https://www.instagram.com/edward_swalker
