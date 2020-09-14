@@ -6,13 +6,10 @@
     <title>登入 - Quahk 發現中小企</title>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <link rel="stylesheet" href="css/memberLoginStyle.css" />
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/materialize.min.css" />
     <script type="text/javascript" src="js/materialize.min.js"></script>
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   </head>
   <body>
     <div class="container" id="loginForm">
@@ -105,9 +102,18 @@
         <p>你的電子郵件格式錯誤，請你檢查一次後再次提交。</p>
       </div>
       <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat"
-          >好</a
-        >
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">好</a>
+      </div>
+    </div>
+
+    <div id="loggedInModal" class="modal">
+      <div class="modal-content">
+        <h4 id="welcomeUser">歡迎回來！</h4>
+        <p>你已登入Quahk發現中小企</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat" onclick="signOut()">登出</a>
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat" onclick="backToIndex()">回到主頁</a>
       </div>
     </div>
 
@@ -120,7 +126,7 @@
         $('.loader-wrapper').fadeOut('slow');
       });
     </script>
-    
+
     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
 
     <!-- TODO: Add SDKs for Firebase products that you want to use
@@ -128,17 +134,18 @@
     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-performance.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>
 
     <script>
       var firebaseConfig = {
-        apiKey: "AIzaSyAG7-yLEWcsPtEgY18yY4v4yGaUui15lvk",
-        authDomain: "quahk-competition-3rdmwdsc.firebaseapp.com",
-        databaseURL: "https://quahk-competition-3rdmwdsc.firebaseio.com",
-        projectId: "quahk-competition-3rdmwdsc",
-        storageBucket: "quahk-competition-3rdmwdsc.appspot.com",
-        messagingSenderId: "768144406056",
-        appId: "1:768144406056:web:40c269b46cd21b67e6e71d",
-        measurementId: "G-6YHSEGHMJV",
+        apiKey: 'AIzaSyAG7-yLEWcsPtEgY18yY4v4yGaUui15lvk',
+        authDomain: 'quahk-competition-3rdmwdsc.firebaseapp.com',
+        databaseURL: 'https://quahk-competition-3rdmwdsc.firebaseio.com',
+        projectId: 'quahk-competition-3rdmwdsc',
+        storageBucket: 'quahk-competition-3rdmwdsc.appspot.com',
+        messagingSenderId: '768144406056',
+        appId: '1:768144406056:web:40c269b46cd21b67e6e71d',
+        measurementId: 'G-6YHSEGHMJV',
       };
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
