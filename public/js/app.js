@@ -46,12 +46,14 @@ function firstLaunch() {
     $('#welcomeModal').modal('open');
   }
 
-  if ((location.search).split('?')[1] == 'done') {
+  if (location.search.split('?')[1] == 'done') {
     M.toast({ html: '成功加入記錄' });
-  } else if ((location.search).split('?')[1] == 'deleted') {
-    M.toast({ html: "成功刪除記錄" });
-  } else if ((location.search).split('?')[1] == 'loginSuccess') {
-    M.toast({ html: "你已登入" });
+  } else if (location.search.split('?')[1] == 'deleted') {
+    M.toast({ html: '成功刪除記錄' });
+  } else if (location.search.split('?')[1] == 'loginSuccess') {
+    M.toast({ html: '你已登入' });
+  } else if (location.search.split('?')[1] == 'signOut') {
+    M.toast({ html: '你已成功登出' });
   }
 }
 
