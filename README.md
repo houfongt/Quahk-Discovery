@@ -1,11 +1,13 @@
-# Quahk 發現中小企
+# Quahk Discovery
 > Version 1.0
  
-### 歡迎
+### Welcome 歡迎
+
+Welcome to Quahk Discovery. When you see some interesting SMEs (shops) on the road, here you can share this merchant with people all over the world and help others to know these unknown shops.
 
 歡迎來到Quahk 發現中小企，當你在路上看到一些有趣的中小企（商店），在這裡你可以與全世界的人分享這個發現，協助其他人認識這些不為人知的商店。
 
-### 基本功能
+### Basic Features 基本功能
 
 * 發佈「中小企」
  
@@ -29,8 +31,6 @@
 
 ### 鄧浩峰 Edward Tang Hou Fong
 我熱愛coding，喜歡直話直說，但你卻會很難捉摸到我。
-
-愛喝咖啡和奶茶。
 
 聯絡我：[edward@quahk.com][4], [Facebook][5], [Instagram][6]
 
