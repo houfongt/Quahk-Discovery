@@ -1,5 +1,8 @@
 # Quahk Discovery
 > Version 1.0
+
+- - -
+> english
  
 ### Welcome 歡迎
 
