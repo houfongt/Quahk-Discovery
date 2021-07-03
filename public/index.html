@@ -27,7 +27,7 @@
         <div class="col s12 m12 l6 xl6" v-for="merchant in merchants">
           <div class="card hoverable">
             <div class="card-image">
-              <img v-bind:src="merchant.imageSrc0" />
+              <img v-bind:src="merchant.imageSrc0"  alt=""/>
             </div>
             <div class="card-content">
               <span class="card-title">{{ merchant.name }}</span>
@@ -111,9 +111,9 @@
           <!--<label for="decoded_location">商家位置</label> -->
         </div>
         <div class="input-field">
-          <center>
+          <div style="text-align: center;">
             <a class="waves-effect waves-light green accent-4 btn" id="autoLocationBtn" onclick="startMap()">自動獲取位置</a>
-          </center>
+          </div>
         </div>
         <br />
       </div>
