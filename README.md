@@ -1,5 +1,8 @@
-# Quahk 發現中小企
+# Quahk Discovery
 > Version 1.0
+
+- - -
+> chinese
  
 ### 歡迎
 
@@ -29,8 +32,6 @@
 
 ### 鄧浩峰 Edward Tang Hou Fong
 我熱愛coding，喜歡直話直說，但你卻會很難捉摸到我。
-
-愛喝咖啡和奶茶。
 
 聯絡我：[edward@quahk.com][4], [Facebook][5], [Instagram][6]
 
